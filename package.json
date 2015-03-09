@@ -1,11 +1,11 @@
 {
-    "name": "Auto-Complete",
+    "name": "TMing",
     "author": {
         "name": "Azai Chan",
         "email": "azai.tw@gmail.com"
     },
     "version": "0.0.1",
-    "description": "Auto-complete search queries with native javascript",
+    "description": "Tming front-end builder",
     "homepage": "",
     "keywords": [],
     "main": "server.js",
