@@ -1,0 +1,31 @@
+<div>
+    <ul>
+        {{#menu}}
+        <li>
+            <a href={{url}}>{{name}}</a>
+            {{#if children}}
+            <div>
+                <ul>
+                    {{#children}}
+                    <li>
+                        <a href={{url}}>{{name}}</a>
+                        {{#if children}}
+                        <div>
+                            <ul>
+                                {{#children}}
+                                <li>
+                                    <a href={{url}}>{{name}}</a>
+                                </li>
+                                {{/children}}
+                            </ul>
+                        </div>
+                        {{/if}}
+                    </li>
+                    {{/children}}
+                </ul>
+            </div>
+            {{/if}}
+        </li>
+        {{/menu}}
+    </ul>
+</div>
