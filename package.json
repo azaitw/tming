@@ -12,11 +12,8 @@
     "scripts": {
         "start": "node server.js",
         "build": "gulp build",
-        "inline": "gulp inlinesource",
         "lint": "gulp lint",
-        "template": "gulp render-template",
-        "jsonlint": "gulp jsonlint",
-        "html": "gulp minifyHTML"
+        "template": "gulp render-template"
     },
     "dependencies": {
         "express": "4.11.2",

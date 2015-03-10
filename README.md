@@ -18,4 +18,11 @@ Once it's done, you should see the generated HTML in /output/index.html. Use the
 
 Once it's up, use your browser to open this page:
 
-http://localhost:3000
+`http://localhost:3000`
+
+
+Code Quality
+=================
+You may run this command to validate your Javascript file:
+
+`npm start`
