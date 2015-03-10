@@ -10,19 +10,19 @@ To develop using this builder, you need to do five things:
 4. Write CSS and place files in /source/css, update gulpfile to include these CSS files in specific loading order
 5. In Terminal, navigate to this project folder, and execute this command to build files: 
 
-`npm run build`
+    `npm run build`
 
 Once it's done, you should see the generated HTML in /output/index.html. Use the following command to start a simple Node.js server and verify this page:
 
-`npm start`
+    `npm run start`
 
 Once it's up, use your browser to open this page:
 
-`http://localhost:3000`
+    `http://localhost:3000`
 
 
 Code Quality
 =================
 You may run this command to validate your Javascript file:
 
-`npm start`
+    `npm run lint`
