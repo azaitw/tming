@@ -14,6 +14,9 @@ var inlinesource = require('gulp-inline-source');
 var uglify = require('gulp-uglify');
 var minifyHTML = require('gulp-minify-html');
 
+var jsfiles = ['./source/js/core.js', './source/js/nav.js'];
+var cssfiles = ['normalize.css', 'bricks.css', 'theme.css'];
+
 gulp.task('build', ['minify-css', 'minify-js', 'jsonlint', 'render-template', 'inline-source-and-minify-html']);
 
 // Concat and compress CSS files in source/data/css, and generate output/production.css
@@ -22,7 +25,13 @@ gulp.task('minify-css', function() {
         keepBreaks: false,
         keepSpecialComments: 0
     };
-    return gulp.src('./source/css/*.css')
+    var cssfilesToBuild;
+    if (cssfiles === [] || typeof cssfiles === 'undefined') {
+        cssfilesToBuild = './source/css/*.css';
+    } else {
+        cssfilesToBuild = cssfiles;
+    }
+    return gulp.src(cssfilesToBuild)
     .pipe(concat('production.css'))
     .pipe(base64())
     .pipe(minifyCSS(opts))
@@ -31,7 +40,13 @@ gulp.task('minify-css', function() {
 
 // Concat and compress JS files in source/data/javascript, and generate output/production.js
 gulp.task('minify-js', function () {
-    return gulp.src(['./source/js/core.js', './source/js/nav.js'])
+    var jsfilesToBuild;
+    if (jsfiles === [] || typeof jsfiles === 'undefined') {
+        jsfilesToBuild = './source/js/*.js';
+    } else {
+        jsfilesToBuild = jsfiles;
+    }
+    return gulp.src(jsfilesToBuild)
     .pipe(concat('production.js'))
     .pipe(uglify({mangle: true}))
     .pipe(gulp.dest('./output'));
