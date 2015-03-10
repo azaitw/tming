@@ -2,6 +2,18 @@ TMing Project
 =================
 This is TMing project's web frontend builder. The purpose is to automate repetitive tasks and make code update more agile.
 
+Installation
+=================
+Before you start, you need to install Node.js on your computer. Refer to the website for instructions:
+
+    'https://nodejs.org/'
+
+When installed, clone this repository to you computer, navigate into its directory, and execute this command to install packages, and you are ready to start!
+
+    'npm i'
+
+Development and Build
+=================
 To develop using this builder, you need to do five things:
 
 1. Write html markup in handlebars syntax, and place the source file in /source/templates
@@ -10,15 +22,15 @@ To develop using this builder, you need to do five things:
 4. Write CSS and place files in /source/css, update gulpfile to include these CSS files in specific loading order
 5. In Terminal, navigate to this project folder, and execute this command to build files: 
 
-    `npm run build`
+    'npm run build'
 
 Once it's done, you should see the generated HTML in /output/index.html. Use the following command to start a simple Node.js server and verify this page:
 
-    `npm run start`
+    'npm run start'
 
 Once it's up, use your browser to open this page:
 
-    `http://localhost:3000`
+    'http://localhost:3000'
 
 
 Code Quality
@@ -26,3 +38,14 @@ Code Quality
 You may run this command to validate your Javascript file:
 
     `npm run lint`
+
+Reference
+=================
+• Npm
+  'https://docs.npmjs.com/'
+
+• Handlebars
+  'http://handlebarsjs.com/'
+
+• Gulp
+  'http://gulpjs.com/'
