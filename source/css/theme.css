@@ -62,9 +62,9 @@
   z-index: 100;
 }
 .nav .snd {
-  -webkit-transition: all 0.3s ease-in-out;
-  -moz-transition: all 0.3s ease-in-out;
-  transition: all 0.3s ease-in-out;
+  -webkit-transition: all 0.25s ease-in-out;
+  -moz-transition: all 0.25s ease-in-out;
+  transition: all 0.25s ease-in-out;
   max-height: 0;
   opacity: 0;
   border-bottom: 2px solid #be0428;
