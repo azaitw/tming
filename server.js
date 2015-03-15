@@ -9,6 +9,7 @@ app.get('/', function(req, res){
     res.sendFile(__dirname + '/output/index.html');
 });
 app.set('port', port);
+app.use('/', express.static(__dirname + '/output'));
 app.listen(app.get('port'), function () {
     console.log('Server started at port ' + port);
 });
