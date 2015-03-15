@@ -1,0 +1,62 @@
+@font1: 'Seravek';
+@font2: 'ITC SLimbach';
+
+@red: #be0428;
+@white: #fff;
+@lightGrey: #c2c2c2;
+@grey: #5d5d5d;
+@black: #000;
+
+.C-red {
+    color: @red;
+}
+.C-wht {
+    color: @white;
+}
+.C-grey1 {
+    color: @lightGrey;
+}
+.C-grey2 {
+    color: @grey;    
+}
+.C-bk {
+    color: @black;
+}
+.header {
+    border-bottom: 2px solid @red;
+    .logo {
+        background: url('../images/logo.png') no-repeat;
+        height: 110px;
+        width: 287px;
+        margin: 30px 0 0 0;
+        padding: 0 0 20px 0;
+    }
+}
+.nav-li {
+    width:100px;
+    height:40px;
+    line-height:40px;
+    &>li>a {
+        &:link,
+        &:visited {
+            color: @red;
+        }
+        &:hover {
+            color: @grey;
+        }
+        &:active {
+            color: @black;
+        }
+    }
+}
+.nav {
+    .fst {
+
+    }
+    .snd {
+        display: none;
+    }
+    .trd {
+
+    }
+}

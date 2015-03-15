@@ -1,36 +1,41 @@
 'use strict';
 
-var gulp = require('gulp');
-var jshint = require('gulp-jshint');
-var concat = require('gulp-concat');
-var minifyCSS = require('gulp-minify-css');
-var handlebars = require('gulp-compile-handlebars');
-var jsonlint = require("gulp-jsonlint");
-var rename = require('gulp-rename');
-var fs = require('fs');
-var path = require('path');
 var base64 = require('gulp-base64');
+var concat = require('gulp-concat');
+var fs = require('fs');
+var gulp = require('gulp');
+var handlebars = require('gulp-compile-handlebars');
 var inlinesource = require('gulp-inline-source');
-var uglify = require('gulp-uglify');
+var jshint = require('gulp-jshint');
+var jsonlint = require("gulp-jsonlint");
+var less = require('gulp-less');
+var merge = require('merge-stream');
+var minifyCSS = require('gulp-minify-css');
 var minifyHTML = require('gulp-minify-html');
+var path = require('path');
+var rename = require('gulp-rename');
+var uglify = require('gulp-uglify');
 
+var cssfiles = ['./source/css/normalize.css', './source/css/bricks.css', './source/css/theme.css'];
 var jsfiles = ['./source/js/core.js', './source/js/nav.js'];
-var cssfiles = ['normalize.css', 'bricks.css', 'theme.css'];
 
-gulp.task('build', ['minify-css', 'minify-js', 'jsonlint', 'render-template', 'inline-source-and-minify-html']);
+gulp.task('build', ['minify-css', 'minify-js', 'jsonlint', 'build-html']);
+
+gulp.task('less', function() {
+    return gulp.src('./source/less/**/*.less')
+    .pipe(less({
+      paths: [ path.join(__dirname, 'less', 'includes') ]
+    }))
+    .pipe(gulp.dest('./source/css/'));
+});
 
 // Concat and compress CSS files in source/data/css, and generate output/production.css
-gulp.task('minify-css', function() {
+gulp.task('minify-css', ['less'], function() {
     var opts = {
         keepBreaks: false,
         keepSpecialComments: 0
     };
-    var cssfilesToBuild;
-    if (cssfiles === [] || typeof cssfiles === 'undefined') {
-        cssfilesToBuild = './source/css/*.css';
-    } else {
-        cssfilesToBuild = cssfiles;
-    }
+    var cssfilesToBuild = cssfiles;
     return gulp.src(cssfilesToBuild)
     .pipe(concat('production.css'))
     .pipe(base64())
@@ -60,12 +65,13 @@ gulp.task('jsonlint', function () {
 });
 
 // Render html using data in source/data against source/templates, and output source/html/index.html
-gulp.task('render-template', function () {
+gulp.task('render-template', function (done) {
    var filepath = path.join(__dirname, './source/data/data-structure.json');
    var options = {
        ignorePartials: true,
        batch : ['./source/templates/partials']
    }
+
    fs.readFile(filepath, {encoding: 'utf-8'}, function (err, D) {
        var data;
         if (err) {
@@ -73,15 +79,18 @@ gulp.task('render-template', function () {
             return;
         }
         data = JSON.parse(D);
-        return gulp.src('./source/templates/index.handlebars')
+        gulp.src('./source/templates/index.handlebars')
         .pipe(handlebars(data, options))
         .pipe(rename('index.html'))
-        .pipe(gulp.dest('./source/html'));
+        .pipe(gulp.dest('./source/html'))
+        .on('end', done); 
+        return;
    });
+
 });
 
 // Copy output/production.js and output/production.css into source/html/index.html, compress html, and generate output/index.html
-gulp.task('inline-source-and-minify-html', function () {
+gulp.task('build-html', ['render-template'], function () {
     var optsInline = {
         swallowErrors: true
     };
