@@ -141,7 +141,7 @@ gulp.task('build', ['render-template', 'minify-js', 'minify-css'], function () {
 
 // Validate all JS files
 gulp.task('lint', function() {
-    return gulp.src('./**/*.js')
+    return gulp.src('./source/js/*.js')
     .pipe(jshint())
     .pipe(jshint.reporter('default', { verbose: true }));
 });

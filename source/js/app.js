@@ -1,7 +1,5 @@
-/* jshint strict:true, unused: false */
+/* jshint strict:false, unused: false */
 /* global document, XMLHttpRequest, window */
-
-'use strict';
 
 var app = {
     attrs: {
@@ -70,7 +68,7 @@ var app = {
         var that = this;
         var bindEvent = function (el) {
             el.addEventListener('click', that.toggleNav);
-        }
+        };
         for (i = 0; i < navLinksLen; i += 1) {
             bindEvent(navLinks[i]);
         }
