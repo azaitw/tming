@@ -111,6 +111,19 @@ gulp.task('render-template', ['jsonlint'], function (done) {
    });
 
 });
+gulp.task('build', ['copy'], function () {
+    var optsHtml = {
+      conditionals: true,
+      spare: true
+    };
+    var optsInline = {
+        swallowErrors: true
+    };
+    return gulp.src('./source/rendered/*.html')
+//    .pipe(inlinesource(optsInline))
+    .pipe(minifyHTML(optsHtml))
+    .pipe(gulp.dest('output'));
+});
 
 // Copy output/production.js and output/production.css into source/html/index.html, compress html, and generate output/index.html
 gulp.task('build-dev', ['render-template', 'concat-js', 'concat-css'], function () {
@@ -119,23 +132,13 @@ gulp.task('build-dev', ['render-template', 'concat-js', 'concat-css'], function 
       spare: true
     };
     return gulp.src('./source/rendered/*')
-//    .pipe(minifyHTML(optsHtml))
     .pipe(gulp.dest('output'));
 });
 
 
 // Copy output/production.js and output/production.css into source/html/index.html, compress html, and generate output/index.html
-gulp.task('build', ['render-template', 'minify-js', 'minify-css'], function () {
-    var optsInline = {
-        swallowErrors: true
-    };
-    var optsHtml = {
-      conditionals: true,
-      spare: true
-    };
-    return gulp.src('./source/rendered/*.html')
-    .pipe(inlinesource(optsInline))
-    .pipe(minifyHTML(optsHtml))
+gulp.task('copy', ['render-template', 'minify-js', 'minify-css'], function () {
+    return gulp.src('./source/rendered/*')
     .pipe(gulp.dest('output'));
 });
 
