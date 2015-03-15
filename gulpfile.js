@@ -17,9 +17,7 @@ var rename = require('gulp-rename');
 var uglify = require('gulp-uglify');
 
 var cssfiles = ['./source/css/normalize.css', './source/css/bricks.css', './source/css/theme.css'];
-var jsfiles = ['./source/js/core.js', './source/js/nav.js'];
-
-gulp.task('build', ['minify-css', 'minify-js', 'jsonlint', 'build-html']);
+var jsfiles = ['./source/js/app.js'];
 
 gulp.task('less', function() {
     return gulp.src('./source/less/**/*.less')
@@ -40,7 +38,19 @@ gulp.task('minify-css', ['less'], function() {
     .pipe(concat('production.css'))
     .pipe(base64())
     .pipe(minifyCSS(opts))
-    .pipe(gulp.dest('./output/'));
+    .pipe(gulp.dest('./source/rendered'));
+});
+
+gulp.task('concat-css', ['less'], function() {
+    var opts = {
+        keepBreaks: false,
+        keepSpecialComments: 0
+    };
+    var cssfilesToBuild = cssfiles;
+    return gulp.src(cssfilesToBuild)
+    .pipe(concat('production.css'))
+    .pipe(base64())
+    .pipe(gulp.dest('./source/rendered'));
 });
 
 // Concat and compress JS files in source/data/javascript, and generate output/production.js
@@ -54,7 +64,20 @@ gulp.task('minify-js', function () {
     return gulp.src(jsfilesToBuild)
     .pipe(concat('production.js'))
     .pipe(uglify({mangle: true}))
-    .pipe(gulp.dest('./output'));
+    .pipe(gulp.dest('./source/rendered'));
+});
+
+// Concat and compress JS files in source/data/javascript, and generate output/production.js
+gulp.task('concat-js', function () {
+    var jsfilesToBuild;
+    if (jsfiles === [] || typeof jsfiles === 'undefined') {
+        jsfilesToBuild = './source/js/*.js';
+    } else {
+        jsfilesToBuild = jsfiles;
+    }
+    return gulp.src(jsfilesToBuild)
+    .pipe(concat('production.js'))
+    .pipe(gulp.dest('./source/rendered'));
 });
 
 // Validate source/data JSON files
@@ -65,7 +88,7 @@ gulp.task('jsonlint', function () {
 });
 
 // Render html using data in source/data against source/templates, and output source/html/index.html
-gulp.task('render-template', function (done) {
+gulp.task('render-template', ['jsonlint'], function (done) {
    var filepath = path.join(__dirname, './source/data/data-structure.json');
    var options = {
        ignorePartials: true,
@@ -82,7 +105,7 @@ gulp.task('render-template', function (done) {
         gulp.src('./source/templates/index.handlebars')
         .pipe(handlebars(data, options))
         .pipe(rename('index.html'))
-        .pipe(gulp.dest('./source/html'))
+        .pipe(gulp.dest('./source/rendered'))
         .on('end', done); 
         return;
    });
@@ -90,7 +113,19 @@ gulp.task('render-template', function (done) {
 });
 
 // Copy output/production.js and output/production.css into source/html/index.html, compress html, and generate output/index.html
-gulp.task('build-html', ['render-template'], function () {
+gulp.task('build-dev', ['render-template', 'concat-js', 'concat-css'], function () {
+    var optsHtml = {
+      conditionals: true,
+      spare: true
+    };
+    return gulp.src('./source/rendered/*')
+//    .pipe(minifyHTML(optsHtml))
+    .pipe(gulp.dest('output'));
+});
+
+
+// Copy output/production.js and output/production.css into source/html/index.html, compress html, and generate output/index.html
+gulp.task('build', ['render-template', 'minify-js', 'minify-css'], function () {
     var optsInline = {
         swallowErrors: true
     };
@@ -98,7 +133,7 @@ gulp.task('build-html', ['render-template'], function () {
       conditionals: true,
       spare: true
     };
-    return gulp.src('./source/html/*.html')
+    return gulp.src('./source/rendered/*.html')
     .pipe(inlinesource(optsInline))
     .pipe(minifyHTML(optsHtml))
     .pipe(gulp.dest('output'));
