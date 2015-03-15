@@ -1,31 +1,36 @@
-<div>
-    <ul>
-        {{#menu}}
-        <li>
-            <a href={{url}}>{{name}}</a>
-            {{#if children}}
-            <div>
-                <ul>
-                    {{#children}}
-                    <li>
-                        <a href={{url}}>{{name}}</a>
-                        {{#if children}}
-                        <div>
-                            <ul>
-                                {{#children}}
-                                <li>
-                                    <a href={{url}}>{{name}}</a>
-                                </li>
-                                {{/children}}
-                            </ul>
-                        </div>
-                        {{/if}}
-                    </li>
-                    {{/children}}
-                </ul>
-            </div>
-            {{/if}}
-        </li>
-        {{/menu}}
-    </ul>
-</div>
+<nav>
+    <div class="fst">
+        <ul>
+            {{#menu}}
+            <li class="D-ib Ta-c nav-li">
+                <a class="Td-0 D-b W-100 H-100" href={{url}}>{{name}}</a>
+                <div class="snd">
+                    {{#if desc}}
+                    <div class="desc">{{desc}}</div>
+                    {{/if}}
+                    {{#if children}}
+                        <ul>
+                            {{#children}}
+                            <li>
+                                <a href={{url}}>{{name}}</a>
+                                {{#if children}}
+                                <div class="trd">
+                                    <ul>
+                                        {{#children}}
+                                        <li>
+                                            <a href={{url}}>{{name}}</a>
+                                        </li>
+                                        {{/children}}
+                                    </ul>
+                                </div>
+                                {{/if}}
+                            </li>
+                            {{/children}}
+                        </ul>
+                    {{/if}}
+                </div>
+            </li>
+            {{/menu}}
+        </ul>
+    </div>
+</nav>

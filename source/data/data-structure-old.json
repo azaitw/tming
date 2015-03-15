@@ -1,39 +1,8 @@
 {
     "menu": [
         {
-            "name": "About Us",
-            "url": "/asp/new_portal/what_is_TutorMing.asp",
-            "desc": "everything about us",
-            "children": [
-                {
-                    "name": "Who is TutorMing?",
-                    "url": "/asp/new_portal/what_is_TutorMing.asp"
-                },
-                {
-                    "name": "Out Investors",
-                    "url": ""
-                },
-                {
-                    "name": "Awards and Accolades",
-                    "url": "/asp/new_portal/awards_and_accolades.asp"
-                },
-                {
-                    "name": "TutorMing Milestones",
-                    "url": ""
-                },
-                {
-                    "name": "FAQ",
-                    "url": "/asp/new_portal/faq.asp"
-                },
-                {
-                    "name": "Contact Us",
-                    "url": "/asp/about_us/contact_us.asp"
-                }
-            ]
-        },
-        {
-            "name": "Products",
-            "url": "/products",
+            "name": "Classes",
+            "url": "",
             "desc": "",
             "children": [
                 {
@@ -77,13 +46,13 @@
             ]
         },
         {
-            "name": "Member",
+            "name": "Tutors",
             "url": "/asp/new_portal/certified_tutors.asp",
             "desc": ""
         },
         {
-            "name": "Community",
-            "url": "/community",
+            "name": "Methods",
+            "url": "",
             "desc": "",
             "children": [
                 {
@@ -109,13 +78,49 @@
             ]
         },
         {
-            "name": "Login",
-            "url": "/login",
+            "name": "About Us",
+            "url": "/asp/new_portal/what_is_TutorMing.asp",
+            "desc": "everything about us",
+            "children": [
+                {
+                    "name": "Who is TutorMing?",
+                    "url": "/asp/new_portal/what_is_TutorMing.asp"
+                },
+                {
+                    "name": "Out Investors",
+                    "url": ""
+                },
+                {
+                    "name": "Awards and Accolades",
+                    "url": "/asp/new_portal/awards_and_accolades.asp"
+                },
+                {
+                    "name": "TutorMing Milestones",
+                    "url": ""
+                },
+                {
+                    "name": "FAQ",
+                    "url": "/asp/new_portal/faq.asp"
+                },
+                {
+                    "name": "Contact Us",
+                    "url": "/asp/about_us/contact_us.asp"
+                }
+            ]
+        },
+        {
+            "name": "Free Tools",
+            "url": "/asp/new_portal/learning_tools.asp",
             "desc": ""
         },
         {
-            "name": "Register",
-            "url": "/register",
+            "name": "Blog",
+            "url": "",
+            "desc": ""
+        },
+        {
+            "name": "Login",
+            "url": "",
             "desc": ""
         }
     ]

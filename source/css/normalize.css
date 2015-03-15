@@ -339,6 +339,10 @@ input[type="radio"] {
   padding: 0; /* 2 */
 }
 
+input[type=text]:focus, textarea:focus {
+    outline: none;
+}
+
 /**
  * Fix the cursor style for Chrome's increment/decrement buttons. For certain
  * `font-size` values of the `input`, it causes the cursor style of the
