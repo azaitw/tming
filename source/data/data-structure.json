@@ -3,7 +3,7 @@
         {
             "name": "About Us",
             "url": "/asp/new_portal/what_is_TutorMing.asp",
-            "desc": "everything about us",
+            "desc": "TutorMing is your online solution to learning Chinese.",
             "children": [
                 {
                     "name": "Who is TutorMing?",
@@ -11,7 +11,7 @@
                 },
                 {
                     "name": "Out Investors",
-                    "url": ""
+                    "url": "#"
                 },
                 {
                     "name": "Awards and Accolades",
@@ -19,7 +19,7 @@
                 },
                 {
                     "name": "TutorMing Milestones",
-                    "url": ""
+                    "url": "#"
                 },
                 {
                     "name": "FAQ",
@@ -38,7 +38,7 @@
             "children": [
                 {
                     "name": "About Online Chinese Classes",
-                    "url": ""
+                    "url": "#"
                 },
                 {
                     "name": "Chinese Exams",
@@ -46,11 +46,11 @@
                     "children": [
                         {
                             "name": "AP Chinese Prep",
-                            "url": ""
+                            "url": "#"
                         },
                         {
                             "name": "HSK",
-                            "url": ""
+                            "url": "#"
                         }
                     ]
                 },
@@ -60,7 +60,7 @@
                 },
                 {
                     "name": "Chinese Lessons for Beginners",
-                    "url": ""
+                    "url": "#"
                 },
                 {
                     "name": "Chinese Lessons for Work",
@@ -88,11 +88,11 @@
             "children": [
                 {
                     "name": "About Our Chinese Learning Methods",
-                    "url": ""
+                    "url": "#"
                 },
                 {
                     "name": "DCGS",
-                    "url": ""
+                    "url": "#"
                 },
                 {
                     "name": "Demonstrations",
@@ -104,19 +104,19 @@
                 },
                 {
                     "name": "Chinese Materials Preview",
-                    "url": ""
+                    "url": "#"
                 }
             ]
         },
         {
             "name": "Login",
             "url": "/login",
-            "desc": ""
+            "desc": "#"
         },
         {
             "name": "Register",
             "url": "/register",
-            "desc": ""
+            "desc": "#"
         }
     ]
 }

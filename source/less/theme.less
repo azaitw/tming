@@ -48,9 +48,9 @@
     }
 }
 .nav-li {
-    width:100px;
-    height:40px;
-    line-height:40px;
+    width: 95px;
+    height: 40px;
+    line-height: 40px;
     .nav-li-a {
         &:link,
         &:visited {
@@ -89,6 +89,18 @@
         opacity: 0;
         border-bottom: 2px solid @red;
         background: @lightGrey;
+        a {
+            &:link,
+            &:visited {
+                color: @grey;
+            }
+            &:hover {
+                color: @black;
+            }
+            &:active {
+                color: @white;
+            }
+        }
     }
     .trd {
 

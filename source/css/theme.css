@@ -38,7 +38,7 @@
   z-index: 100;
 }
 .nav-li {
-  width: 100px;
+  width: 95px;
   height: 40px;
   line-height: 40px;
 }
@@ -69,4 +69,14 @@
   opacity: 0;
   border-bottom: 2px solid #be0428;
   background: #c2c2c2;
+}
+.nav .snd a:link,
+.nav .snd a:visited {
+  color: #5d5d5d;
+}
+.nav .snd a:hover {
+  color: #000000;
+}
+.nav .snd a:active {
+  color: #ffffff;
 }
