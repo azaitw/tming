@@ -34,8 +34,7 @@
         "gulp-rename": "*",
         "gulp-tinypng": "*",
         "gulp-uglify": "*",
-        "gulp-watch": "*",
-        "q": "*"
+        "gulp-watch": "*"
     },
     "repository": {
     "type": "git",
