@@ -6,6 +6,10 @@ var app = {
         nav: {
             opened: undefined,
             animating: false
+        },
+        navMobile: {
+            opened: false,
+            animating: false
         }
     },
     query: function (queryStr) {
@@ -61,6 +65,49 @@ var app = {
             }
         }
     },
+    updateHeight: function (container, nav) {
+        var navHeight = app.getElementHeight(nav);
+        container.style.height = navHeight + 'px';
+    },
+    getElementHeight: function (el) {
+        var height = Math.max(el.clientHeight, screen.height, window.innerHeight);
+        console.log('height: ', height);
+        return height;
+    },
+    toggleNavMobile: function () {
+        var navMobileStatus = app.attrs.navMobile.opened;
+        var navMobileAnimateStatus = app.attrs.navMobile.animating;
+        var navMobile = app.query('.nav-m')[0];
+        var navMobileHeight;
+        var container = app.query('.container')[0];
+        var navMobileClass = navMobile.className;
+        if (!navMobileAnimateStatus) {
+            app.attrs.navMobile.animating = true;
+            if (!navMobileStatus) { // to show menu
+                window.scrollTo(0, 0);
+                window.addEventListener('orientationchange', app.updateHeight(container, navMobile));
+                app.attrs.navMobile.opened = true;
+                navMobile.style.display = 'block';
+                navMobileHeight = Math.max(navMobile.clientHeight, screen.height);
+                container.style.height = navMobileHeight + 'px';
+                container.style.overflow = 'hidden';
+                setTimeout(function () {
+                    navMobile.style.opacity = '1';
+                    app.attrs.navMobile.animating = false;
+                }, 1);
+            } else { // to hide menu
+                window.removeEventListener('orientationchange', app.updateHeight);
+                app.attrs.navMobile.opened = false;
+                container.style.height = '';
+                container.style.overflow = 'visible';
+                    navMobile.style.opacity = '0';
+                setTimeout(function () {
+                navMobile.style.display = 'none';
+                    app.attrs.navMobile.animating = false;
+                }, 200);
+            }   
+        }
+    },
     init: function () {
         var navLinks = this.query('.nav-li-a');
         var navLinksLen = navLinks.length;
@@ -69,9 +116,14 @@ var app = {
         var bindEvent = function (el) {
             el.addEventListener('click', that.toggleNav);
         };
+        var navMobileBtn = this.query('.nav-m-toggle')[0];
+        var navMobileCloseBtn = this.query('.nav-m-close')[0];
         for (i = 0; i < navLinksLen; i += 1) {
             bindEvent(navLinks[i]);
         }
+        navMobileBtn.addEventListener('click', that.toggleNavMobile);
+        navMobileCloseBtn.addEventListener('click', that.toggleNavMobile);
+
     }
 };
 app.init();
