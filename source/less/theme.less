@@ -7,6 +7,14 @@
 @grey: #5d5d5d;
 @black: #000;
 
+.transition (@transition) {
+	-webkit-transition: @transition;
+	-moz-transition: @transition;
+	-ms-transition: @transition;
+	-o-transition: @transition;
+    transition: @transition;
+}
+
 .C-red {
     color: @red;
 }
@@ -32,9 +40,6 @@
     text-shadow: 0 0 6px @grey;
 }
 .header {
-    .logo {
-        background: url('../images/logo.png') no-repeat;
-    }
     &:after {
         display: block;
         content: " ";
@@ -46,6 +51,18 @@
         background: @red;
         z-index: 100;
     }
+}
+.logo {
+    background: url('../images/logo.png') no-repeat;
+    background-size:100%;
+    height:110px;
+    width:287px;
+    margin: 30px 0 0 0;
+    padding: 0 0 20px 0;
+}
+.nav {
+    margin:90px 0 0 0;
+    width: 610px;
 }
 .nav-li {
     width: 95px;
@@ -77,18 +94,23 @@
         }
     }
 }
+.banner1 {
+    right: 100px;
+    top: 224px;
+    width: 250px;
+}
 .nav {
     .fst {
 
     }
     .snd {
-        -webkit-transition: all 0.25s ease-in-out;
-        -moz-transition: all 0.25s ease-in-out;
-        transition: all 0.25s ease-in-out;
+        .transition(all 0.25s ease-in-out);
         max-height: 0;
         opacity: 0;
         border-bottom: 2px solid @red;
         background: @lightGrey;
+        top: 160px;
+        padding: 0 0 50px 0;
         a {
             &:link,
             &:visited {
@@ -101,8 +123,51 @@
                 color: @white;
             }
         }
+        .desc {
+            margin: 0 100px 0 0;
+        }
     }
     .trd {
 
     }
+}
+
+.wrap {
+    width: 900px;
+}
+
+@media only screen and (min-width : 480px) and (max-width: 900px) {
+    .header {
+        
+    }
+    .logo {
+        width: 143.5px;
+        height: 55px;
+    }
+    .wrap {
+        width: 600px;
+    }
+    .nav {
+        width: 450px;
+        margin: 50px 0 0 0;
+        .snd {
+            top: 105px;
+            font-size: 15px;
+            line-height: 26px;
+            padding: 0 0 30px 0;
+            .desc {
+                margin: 0 20px 0 0;
+            }
+        }
+    }
+    .nav-li {
+        width: 75px;
+    }
+    .banner1 {
+        right: 0;
+    }
+}
+
+@media (max-width: 480px) {
+
 }

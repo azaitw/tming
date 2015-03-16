@@ -209,7 +209,7 @@ table.Ta-c th,table.Ta-c td {text-align: center}
 
 /* Whitespace*/
 .Ws-nw {white-space:nowrap}
-
+.Ws-n {white-space:normal}
 /* Background */
 .Bg-n {background:none}
 
