@@ -9,7 +9,6 @@ var inlinesource = require('gulp-inline-source');
 var jshint = require('gulp-jshint');
 var jsonlint = require("gulp-jsonlint");
 var less = require('gulp-less');
-var merge = require('merge-stream');
 var minifyCSS = require('gulp-minify-css');
 var minifyHTML = require('gulp-minify-html');
 var path = require('path');
