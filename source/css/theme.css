@@ -149,6 +149,22 @@
   -o-transition: all 0.8s ease-in-out;
   transition: all 0.8s ease-in-out;
 }
+.footer {
+  border-top: 10px solid #be0428;
+}
+.ft-nav-li {
+  margin: 0 15px;
+  font-size: 15px;
+}
+.circle {
+  width: 100px;
+}
+.circle div {
+  border-radius: 100px;
+  background: #c2c2c2;
+  height: 76px;
+  width: 76px;
+}
 @media only screen and (min-width: 650px) and (max-width: 900px) {
   /* tablet or small screen desktop */
   .logo {
@@ -182,6 +198,9 @@
   }
   .banner2 {
     left: 0;
+  }
+  .ft-nav-li {
+    margin: 0 5px;
   }
 }
 @media only screen and (max-width: 650px) {
@@ -225,5 +244,9 @@
     letter-spacing: 0.8px;
     font-size: 30px;
     text-shadow: 0 0 6px #333;
+  }
+  .ft-nav-li {
+    margin: 0 5px;
+    font-size: 13px;
   }
 }

@@ -144,5 +144,35 @@
             "url": "/register",
             "desc": "#"
         }
+    ],
+    "footer": [
+        {
+            "name": "Home",
+            "url": ""
+        },
+        {
+            "name": "About Us",
+            "url": ""
+        },
+        {
+            "name": "Privacy Policy",
+            "url": ""
+        },
+        {
+            "name": "Terms and Conditions",
+            "url": ""
+        },
+        {
+            "name": "Contact Us",
+            "url": ""
+        },
+        {
+            "name": "Blog",
+            "url": ""
+        },
+        {
+            "name": "Careers",
+            "url": ""
+        }
     ]
 }
