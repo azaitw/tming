@@ -1,0 +1,15 @@
+<ul class="slideshow Pos-r W-100 H-100 Ws-nw">
+    {{#deck}}<li class="D-ib W-100 H-100">
+        <div class="M-0a Pos-r wrap">
+            <div class="Pos-a Z-2 banner1 Ws-n">
+                <h2 class="Font-2 M-0 Mb-5 C-wht Fw-1">
+                    {{{title}}}
+                </h2>
+                <p class="Font-1 M-0 C-wht Fw-1 Ts-1">
+                    {{{desc}}}
+                </p>
+            </div>
+        </div>
+        <div class="Pos-a T-0 W-100 H-100 Z-1" style="background-position: 50% 50%;background-size: cover;background-image:url({{url}})"></div>
+    </li>{{/deck}}
+</ul>

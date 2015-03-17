@@ -24,17 +24,10 @@
             </div>
             <div class="body">
                 <section>
-                    <div class="W-100 Pos-r hero1">
-                        <div class="M-0a Pos-r wrap">
-                            <div class="Pos-a Z-2 banner1">
-                                <h2 class="Font-2 M-0 Mb-5 C-wht Fw-1">
-                                    <span class="Cf">24/7 Learning is</span>
-                                    <span class="Cf">just a click away</span>
-                                </h2>
-                                <p class="Font-1 M-0 C-wht Fw-1 Ts-1">Enjoy learning Chinese in the most fun and easiest way possible. Anytime, Anywhere, TutorMing.</p>
-                            </div>
-                        </div>
-                        <div class="Pos-a T-0 W-100 H-100 Z-1" style="background-position: 50% 50%;background-size: cover;background-image:url(images/banner1.jpg)"></div>
+                    <div class="W-100 Pos-r hero1 Ov-h">
+                        {{#hero1}}
+                            {{>slideshow}}
+                        {{/hero1}}
                     </div>
                 </section>
                 <section>

@@ -10,15 +10,21 @@ var app = {
         navMobile: {
             opened: false,
             animating: false
+        },
+        slideshow: {
+            interval: 4000,
+            animation: 800,
+            state: [] // {elements: [], position: 0, size: N}
         }
     },
-    query: function (queryStr) {
+    query: function (queryStr, parentNode) {
         var hasWhitespace = queryStr.indexOf(' ');
         var type = queryStr.substring(0, 1);
         var str = queryStr.substring(1);
         var func;
+        var node = (parentNode) ? parentNode : document;
         if (hasWhitespace !== -1) {
-            return document.querySelectorAll(queryStr) || [{}];
+            return node.querySelectorAll(queryStr) || [{}];
         }
         switch (type) {
         case '#':
@@ -29,22 +35,19 @@ var app = {
             break;
         default:
             func = 'getElementsByTagName';
+            str = queryStr;
         }
-        return document[func](str);
+        return node[func](str);
     },
-    removeClassName: function (classes, toRemove) {
-        var index = classes.indexOf(toRemove);
-        var pre = classes.substring(0, index);
-        var post = classes.substring(index + 2);
-        return (pre + post).trim();
+    removeClassName: function (obj, toRemove) {
+        var reg = new RegExp('(\\s|^)' + toRemove + '(\\s|$)');
+        obj.className = obj.className.replace(reg, ' ').trim();
     },
     toggleNav: function (e) {
         var clickedNav = e.currentTarget;
         var clickedNavIndex = clickedNav.dataset.index;
-        var clickedNavClassName;
         var openedNav;
         var openedNavIndex = app.attrs.nav.opened;
-        var openedNavClassName;
 
         e.preventDefault();
 
@@ -55,36 +58,25 @@ var app = {
             } else if (openedNavIndex !== clickedNavIndex) { // switch nav
                 app.attrs.nav.opened = clickedNavIndex;
                 openedNav = app.query('.nav-li-a')[openedNavIndex];
-                openedNavClassName = openedNav.parentNode.className;
-                openedNav.parentNode.className = app.removeClassName(openedNavClassName, 'on');
+                app.removeClassName(openedNav.parentNode, 'on');
                 clickedNav.parentNode.className += ' on';
             } else { // close nav
                 app.attrs.nav.opened = undefined;
-                clickedNavClassName = clickedNav.parentNode.className;
-                clickedNav.parentNode.className = app.removeClassName(clickedNavClassName, 'on');
+                app.removeClassName(clickedNav.parentNode, 'on');
             }
         }
-    },
-    getElementHeight: function (el) {
-        var height = Math.max(el.clientHeight, screen.height, window.innerHeight);
-        console.log('height: ', height);
-        return height;
     },
     toggleNavMobile: function () {
         var navMobileStatus = app.attrs.navMobile.opened;
         var navMobileAnimateStatus = app.attrs.navMobile.animating;
         var navMobile = app.query('.nav-m')[0];
-        var navMobileHeight;
         var container = app.query('.container')[0];
-        var navMobileClass = navMobile.className;
         if (!navMobileAnimateStatus) {
             app.attrs.navMobile.animating = true;
             if (!navMobileStatus) { // to show menu
                 window.scrollTo(0, 0);
                 app.attrs.navMobile.opened = true;
                 navMobile.style.display = 'block';
-//                navMobileHeight = navMobile.clientHeight, screen.height;
-//                container.style.height = navMobileHeight + 'px';
                 container.style.height = '500px';
                 container.style.overflow = 'hidden';
                 setTimeout(function () {
@@ -92,7 +84,6 @@ var app = {
                     app.attrs.navMobile.animating = false;
                 }, 1);
             } else { // to hide menu
-//                window.removeEventListener('orientationchange', app.updateHeight);
                 app.attrs.navMobile.opened = false;
                 container.style.height = '';
                 container.style.overflow = 'visible';
@@ -104,22 +95,65 @@ var app = {
             }   
         }
     },
+    autoSlideshow: function (el, key) {
+        var children = app.query('li', el);
+        var returnNextPosition = function () {
+            var data = app.attrs.slideshow.state[key];
+            if (data.position >= (data.size - 1)) {
+                app.attrs.slideshow.state[key].position = 0;
+            } else {
+                app.attrs.slideshow.state[key].position += 1;
+            }  
+        };
+        var shuffleDeck = function () {
+            var position = app.attrs.slideshow.state[key].position;
+            var size = app.attrs.slideshow.state[key].size;
+            if (position === (size - 1)) {
+                setTimeout(function () {
+                    app.removeClassName(el, 'move');
+                    el.style.left = 0;
+                    app.attrs.slideshow.state[key].position = 0;
+                }, app.attrs.slideshow.animation);
+                setTimeout(function () {
+                    el.className += ' move';
+                }, app.attrs.slideshow.animation + 100);
+            }
+        };
+        el.appendChild(children[0].cloneNode(true));
+        el.style.left = '0%';
+        el.className += ' move';
+        app.attrs.slideshow.state[key] = {
+            position: 0,
+            size: children.length
+        };
+        setInterval(function () {
+            returnNextPosition(app.attrs.slideshow.state[key].position);
+            el.style.left = '-' + (app.attrs.slideshow.state[key].position * 100) + '%';
+            shuffleDeck();
+        }, app.attrs.slideshow.interval);
+    },
     init: function () {
         var navLinks = this.query('.nav-li-a');
-        var navLinksLen = navLinks.length;
         var i;
         var that = this;
+        var navMobileBtn = this.query('.nav-m-toggle')[0];
+        var navMobileCloseBtn = this.query('.nav-m-close')[0];
+        var slideshows = this.query('.slideshow');
+        var slideshowsDeckLen;
         var bindEvent = function (el) {
             el.addEventListener('click', that.toggleNav);
         };
-        var navMobileBtn = this.query('.nav-m-toggle')[0];
-        var navMobileCloseBtn = this.query('.nav-m-close')[0];
-        for (i = 0; i < navLinksLen; i += 1) {
+        for (i = 0; i < navLinks.length; i += 1) {
             bindEvent(navLinks[i]);
+        }
+        for (i = 0; i < slideshows.length; i += 1) {
+            slideshowsDeckLen = this.query('li', slideshows[i]).length;
+            if (slideshowsDeckLen > 1) {
+                that.autoSlideshow(slideshows[i], i);
+            }
         }
         navMobileBtn.addEventListener('click', that.toggleNavMobile);
         navMobileCloseBtn.addEventListener('click', that.toggleNavMobile);
-
     }
 };
 app.init();
