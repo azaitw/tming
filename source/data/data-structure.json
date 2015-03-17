@@ -4,12 +4,24 @@
             {
                 "title": "<span class=\"Cf\">24/7 Learning is</span><span class=\"Cf\">just a click away</span>",
                 "desc": "Enjoy learning Chinese in the most fun and easiest way possible. Anytime, Anywhere, TutorMing.",
-                "url": "/images/banner1.jpg"
+                "url": "/images/banner1.jpg",
+                "classnames": "banner1 "
             },
             {
-                "title": "<span class=\"Cf\">TutorGlass</span><span class=\"Cf Fz-3\">The Future of Learning</span>",
+                "title": "<span class=\"Cf\">TutorGlass</span><span class=\"Cf Fz-4\">The Future of Learning</span>",
                 "desc": "Enjoy learning Chinese in the most fun and easiest way possible. Anytime, Anywhere, TutorMing.",
-                "url": "/images/banner2.jpg"
+                "url": "/images/banner2.jpg",
+                "classnames": "banner2 "
+            }
+        ]
+    },
+    "hero2": {
+        "deck": [
+            {
+                "title": "<span class=\"Cf\">TutorGlass</span><span class=\"Cf Fz-4 Ls-3\">The Future of Learning</span>",
+                "desc": "Enjoy learning Chinese in the most fun and easiest way possible. Anytime, Anywhere, TutorMing.",
+                "url": "/images/banner2.jpg",
+                "classnames": "banner2 "
             }
         ]
     },
