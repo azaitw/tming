@@ -65,10 +65,6 @@ var app = {
             }
         }
     },
-    updateHeight: function (container, nav) {
-        var navHeight = app.getElementHeight(nav);
-        container.style.height = navHeight + 'px';
-    },
     getElementHeight: function (el) {
         var height = Math.max(el.clientHeight, screen.height, window.innerHeight);
         console.log('height: ', height);
@@ -85,22 +81,22 @@ var app = {
             app.attrs.navMobile.animating = true;
             if (!navMobileStatus) { // to show menu
                 window.scrollTo(0, 0);
-                window.addEventListener('orientationchange', app.updateHeight(container, navMobile));
                 app.attrs.navMobile.opened = true;
                 navMobile.style.display = 'block';
-                navMobileHeight = Math.max(navMobile.clientHeight, screen.height);
-                container.style.height = navMobileHeight + 'px';
+//                navMobileHeight = navMobile.clientHeight, screen.height;
+//                container.style.height = navMobileHeight + 'px';
+                container.style.height = '500px';
                 container.style.overflow = 'hidden';
                 setTimeout(function () {
                     navMobile.style.opacity = '1';
                     app.attrs.navMobile.animating = false;
                 }, 1);
             } else { // to hide menu
-                window.removeEventListener('orientationchange', app.updateHeight);
+//                window.removeEventListener('orientationchange', app.updateHeight);
                 app.attrs.navMobile.opened = false;
                 container.style.height = '';
                 container.style.overflow = 'visible';
-                    navMobile.style.opacity = '0';
+                navMobile.style.opacity = '0';
                 setTimeout(function () {
                 navMobile.style.display = 'none';
                     app.attrs.navMobile.animating = false;

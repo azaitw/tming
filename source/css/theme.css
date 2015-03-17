@@ -57,6 +57,7 @@
   opacity: 0;
   background: rgba(0, 0, 0, 0.87);
   padding: 0 0 120px 0;
+  height: 500px;
   -webkit-transition: opacity 0.25s ease-in-out;
   -moz-transition: opacity 0.25s ease-in-out;
   -ms-transition: opacity 0.25s ease-in-out;
