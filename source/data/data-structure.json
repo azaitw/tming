@@ -25,6 +25,16 @@
             }
         ]
     },
+    "hero3": {
+        "deck": [
+            {
+                "title": "Great education partners make it possible!",
+                "desc": "Partners from the Tutor Group",
+                "url": "/images/banner3.jpg",
+                "classnames": "banner3 "
+            }
+        ]
+    },
     "menu": [
         {
             "name": "About Us",

@@ -110,6 +110,28 @@
   letter-spacing: 1px;
   text-shadow: 0 0 6px #5d5d5d;
 }
+.banner3 {
+  left: 30px;
+  top: 100px;
+  width: 400px;
+  height: 350px;
+}
+.banner3 h2 {
+  font-size: 50px;
+  line-height: 50px;
+  letter-spacing: 1px;
+  text-shadow: 0 2px 2px #c2c2c2;
+  color: #be0428;
+}
+.banner3 p {
+  color: #5d5d5d;
+  position: absolute;
+  bottom: 10px;
+  left: 0;
+  text-shadow: none;
+  font-size: 15px;
+  font-weight: 300;
+}
 .nav .snd {
   -webkit-transition: all 0.25s ease-in-out;
   -moz-transition: all 0.25s ease-in-out;
