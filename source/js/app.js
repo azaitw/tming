@@ -71,32 +71,51 @@ var app = {
         console.log('clicking a childless nav');
     },
     toggleNavMobile: function () {
-        var navMobileStatus = app.attrs.navMobile.opened;
-        var navMobileAnimateStatus = app.attrs.navMobile.animating;
-        var navMobile = app.query('.nav-m')[0];
-        var container = app.query('body')[0];
-        if (!navMobileAnimateStatus) {
+        if (!app.attrs.navMobile.opened) { // to show menu
+            app.showNavMobile();
+        } else { // to hide menu
+            app.hideNavMobile();
+        }
+    },
+    showNavMobile: function () {
+        var navMobile;
+        var container;
+        var height;
+        if (!app.attrs.navMobile.animating) {
             app.attrs.navMobile.animating = true;
-            if (!navMobileStatus) { // to show menu
-                window.scrollTo(0, 0);
-                app.attrs.navMobile.opened = true;
-                navMobile.style.display = 'block';
-                container.style.height = '500px';
-                container.style.overflow = 'hidden';
-                setTimeout(function () {
-                    navMobile.style.opacity = '1';
-                    app.attrs.navMobile.animating = false;
-                }, 1);
-            } else { // to hide menu
-                app.attrs.navMobile.opened = false;
-                container.style.height = '';
-                container.style.overflow = 'visible';
-                navMobile.style.opacity = '0';
-                setTimeout(function () {
-                navMobile.style.display = 'none';
-                    app.attrs.navMobile.animating = false;
-                }, 200);
-            }   
+            app.attrs.navMobile.opened = true;
+            window.scrollTo(0, 0);
+            navMobile = app.query('.nav-m')[0];
+            container = app.query('.container')[0];
+            navMobile.style.display = 'block';
+            height = Math.max(screen.height, window.innerHeight, navMobile.clientHeight);
+            container.style.overflow = 'hidden';
+            if (height > navMobile.offsetHeight) {
+                navMobile.style.height = height + 'px';
+            }
+            container.style.height = height + 'px';
+            setTimeout(function () {
+                navMobile.style.opacity = '1';
+                app.attrs.navMobile.animating = false;
+            }, 1);
+        }
+    },
+    hideNavMobile: function () {
+        var navMobile;
+        var container;
+        if (!app.attrs.navMobile.animating) {
+            app.attrs.navMobile.animating = true;
+            app.attrs.navMobile.opened = false;
+            navMobile = app.query('.nav-m')[0];
+            container = app.query('.container')[0];
+            container.style.height = 'auto';
+            navMobile.style.height = 'auto';
+            container.style.overflow = 'visible';
+            navMobile.style.opacity = '0';
+            setTimeout(function () {
+            navMobile.style.display = 'none';
+                app.attrs.navMobile.animating = false;
+            }, 200);
         }
     },
     autoSlideshow: function (el, key) {
@@ -163,6 +182,7 @@ var app = {
             }
         }
         navMobileBtn.addEventListener('click', that.toggleNavMobile);
+        window.addEventListener('orientationchange', that.hideNavMobile);
         navMobileCloseBtn.addEventListener('click', that.toggleNavMobile);
     }
 };
