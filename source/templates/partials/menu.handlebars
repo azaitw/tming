@@ -6,6 +6,7 @@
                 <a class="nav-li-a Fz-3 Td-0 D-b W-100 H-100" href={{url}} data-index={{@index}}>
                     {{name}}
                 </a>
+                {{#if children}}
                 <div class="snd Pos-a W-100 L-0 Z-3 Ov-h Ta-l">
                     <div class="M-0a wrap">
                         <h2 class="Font-2 C-wht Fw-1 Fz-8 Mb-1 Ls-5">{{name}}</h2>
@@ -14,7 +15,6 @@
                             <p class="M-0 C-grey2">{{desc}}</p>
                             {{/if}}
                         </div>
-                        {{#if children}}
                         <ul class="snd-ul D-ib">
                             {{#children}}
                             <li>
@@ -33,9 +33,9 @@
                             </li>
                             {{/children}}
                         </ul>
-                        {{/if}}
                     </div>
                 </div>
+                {{/if}}
             </li>
             {{/menu}}
         </ul>

@@ -66,6 +66,10 @@ var app = {
             }
         }
     },
+    toggleAction: function (e) {
+        e.preventDefault();
+        console.log('clicking a childless nav');
+    },
     toggleNavMobile: function () {
         var navMobileStatus = app.attrs.navMobile.opened;
         var navMobileAnimateStatus = app.attrs.navMobile.animating;
@@ -141,7 +145,13 @@ var app = {
         var slideshows = this.query('.slideshow');
         var slideshowsDeckLen;
         var bindEvent = function (el) {
-            el.addEventListener('click', that.toggleNav);
+            var parent = el.parentElement;
+            var elChildren = app.query('.snd', parent);
+            if (elChildren.length > 0) { // has submenu
+                el.addEventListener('click', that.toggleNav);
+            } else { // childless
+                el.addEventListener('click', that.toggleAction);
+            }
         };
         for (i = 0; i < navLinks.length; i += 1) {
             bindEvent(navLinks[i]);
