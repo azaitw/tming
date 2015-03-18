@@ -74,7 +74,7 @@ var app = {
         var navMobileStatus = app.attrs.navMobile.opened;
         var navMobileAnimateStatus = app.attrs.navMobile.animating;
         var navMobile = app.query('.nav-m')[0];
-        var container = app.query('.container')[0];
+        var container = app.query('body')[0];
         if (!navMobileAnimateStatus) {
             app.attrs.navMobile.animating = true;
             if (!navMobileStatus) { // to show menu
