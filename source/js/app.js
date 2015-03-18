@@ -150,7 +150,7 @@ var app = {
             if (elChildren.length > 0) { // has submenu
                 el.addEventListener('click', that.toggleNav);
             } else { // childless
-                el.addEventListener('click', that.toggleAction);
+//                el.addEventListener('click', that.toggleAction);
             }
         };
         for (i = 0; i < navLinks.length; i += 1) {
