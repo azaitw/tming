@@ -120,7 +120,7 @@ gulp.task('build', ['copy'], function () {
     };
     return gulp.src('./source/rendered/*.html')
 //    .pipe(inlinesource(optsInline))
-    .pipe(minifyHTML(optsHtml))
+//    .pipe(minifyHTML(optsHtml))
     .pipe(gulp.dest('output'));
 });
 
