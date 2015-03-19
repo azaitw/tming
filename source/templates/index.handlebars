@@ -11,7 +11,7 @@
             <div class="header Cf Pos-r">
                 <header>
                     <div class="M-0a Cf wrap">
-                        <h1 class="logo F-l"><span class="noTxt">Tutor Ming</span></h1>
+                        <h1 class="logo F-l Pb-20"><span class="noTxt">Tutor Ming</span></h1>
                         <div class="nav F-r Ws-nw">
                             {{>menu}}
                         </div>
@@ -23,97 +23,44 @@
                 {{>menu-m}}
             </div>
             <div class="body">
-                    <section>
-                        <div class="W-100 Pos-r slideshow-wrap Ov-h">
-                            {{#hero1}}
-                                {{>slideshow}}
-                            {{/hero1}}
-                        </div>
-                    </section>
-                    <section>
-                        <div class="wrap M-0a">
-                            <h2 class="">Why Learn Chinese?</h2>
-                            <ul>
-                                <li>
-                                    <h3>Join over 1 billion other people in speaking the language</h3>
-                                    <p>Learn Chinese to connect better with friends, colleagues, or business contacts.</p>
-                                </li>
-                                <li>
-                                    <h3>Open yourself up more job opportunities</h3>
-                                    <p>China is the world's second-largest economic power, as well as one of the top trade partners of the world. Learn Chinese to give yourself an extra competitive edge.</p>
-                                </li>
-                                <li>
-                                    <h3>Expose yourself to a new culture</h3>
-                                    <p>China has one of the oldest and richest heritages of the world. Learning Chinese will help you better understand its people, customs, and traditions.</p>
-                                </li>
-                            </ul>
-                        </div>
-                    </section>
-                    <section>
-                        <div class="W-100 Pos-r slideshow-wrap Ov-h">
-                            {{#hero2}}
-                                {{>slideshow}}
-                            {{/hero2}}
-                        </div>
-                    </section>
-                    <section>
-                        <div class="wrap M-0a">
-                            <h2 class="">Five advantages to learning with TutorMing</h2>
-                            <ul>
-                                <li>
-                                    <h3>
-                                        <span class="Cf">Anytime</span>
-                                        <span class="Cf">Anywhere</span>
-                                    </h3>
-                                    <p>Whether you are at home, on the go, out of town, using a laptop or tablet... As long as you have Internet, we are here to teach. Doesn't matter if you are an early bird or night owl, we habe lessons for you.</p>
-                                </li>
-                                <li>
-                                    <h3>
-                                        <span class="Cf">Individualized</span>
-                                        <span class="Cf">Attention</span>
-                                    </h3>
-                                    <p>The user experience is at the heart of everything we do. Our sophisticated technology platform ensures that you are matched with the best consultants and course materials to suit you.</p>
-                                </li>
-                                <li>
-                                    <h3>
-                                        <span class="Cf">Technology</span>
-                                        <span class="Cf">Based</span>
-                                    </h3>
-                                    <p>We believe that education should be innovative. Our online classroom features an integrated whiteboard, instant message, quality video and sould - all the benefits of being in a physical classroom.</p>
-                                </li>
-                                <li>
-                                    <h3>
-                                        <span class="Cf">Certified</span>
-                                        <span class="Cf">Consultants</span>
-                                    </h3>
-                                    <p>Quality instruction is important to us. Our world-class consultants are all selectively chosen native Chinese speakers, who then undergo specific training with TutorMing. Each one of them is certified.</p>
-                                </li>
-                                <li>
-                                    <h3>
-                                        <span class="Cf">Privacy</span>
-                                        <span class="Cf">Protection</span>
-                                    </h3>
-                                    <p>We offer a one-way webcam system. You can see our consultants, but our consultant cannot see your, so ylu can try speaking Chinese with confidence.</p>
-                                </li>
-                            </ul>
-                        </div>
-                    </section>
-                    <section>
-                        <div class="W-100 Pos-r slideshow-wrap Ov-h">
-                            {{#hero3}}
-                                {{>slideshow}}
-                            {{/hero3}}
-                        </div>
-                    </section>
+                <section>
+                    <div class="hero1 W-100 Pos-r slideshow-wrap Ov-h">
+                        {{#hero1}}{{>slideshow}}{{/hero1}}
+                    </div>
+                </section>
+                <section>
+                    <div class="wrap M-0a">
+                        {{>why-learn-chinese}}
+                    </div>
+                </section>
+                <section>
+                    <div class="hero1 W-100 Pos-r slideshow-wrap Ov-h">
+                        {{#hero2}}{{>slideshow}}{{/hero2}}
+                    </div>
+                </section>
+                <section>
+                    <div class="wrap M-0a">
+                        {{>advantages}}
+                    </div>
+                </section>
+                <section>
+                    <div class="hero3 W-100 Pos-r slideshow-wrap Ov-h">
+                        {{#hero3}}{{>slideshow}}{{/hero3}}
+                    </div>
+                </section>
             </div>
             <div class="footer" style="height:400px">
-                <footer>
-                    <div class="M-0a Cf wrap Ta-c">
+                <div class="M-0a Cf wrap Ta-c">
                     {{>footer}}
-                    </div>
-                </footer>
+                </div>
             </div>
-            <div class="pop D-n"></div>
+            <div class="signup Pos-a W-100 Bgc-grey2 Pt-7 Z-5">
+                <section>
+                    <div class="wrap M-0a">
+                        {{>signup-form}}
+                    </div>
+                </section>
+            </div>
         </div>
     </body>
     <script src="./production.js" inline></script>

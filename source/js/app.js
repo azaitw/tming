@@ -15,6 +15,9 @@ var app = {
             interval: 4000,
             animation: 800,
             state: [] // {elements: [], position: 0, size: N}
+        },
+        signupForm: {
+            fixed: false
         }
     },
     query: function (queryStr, parentNode) {
@@ -155,6 +158,23 @@ var app = {
             shuffleDeck();
         }, app.attrs.slideshow.interval);
     },
+    bindSignupFormEvent: function (formEl) {
+        var hero1 = app.query('.hero1')[0];
+        var initPosY = hero1.offsetTop + hero1.offsetHeight;
+        var updateFormPos = function () {
+            var posY = window.pageYOffset;
+            if (posY >= initPosY && app.attrs.signupForm.fixed === false) {
+                app.attrs.signupForm.fixed = true;
+                formEl.style.position = 'fixed';
+                formEl.style.top = '0';
+            } else if (posY < initPosY && app.attrs.signupForm.fixed === true){
+                app.attrs.signupForm.fixed = false;
+                formEl.style.position = '';
+                formEl.style.top = '';
+            }
+        };
+        window.addEventListener('scroll', updateFormPos);
+    },
     init: function () {
         var navLinks = this.query('.nav-li-a');
         var i;
@@ -184,6 +204,7 @@ var app = {
         navMobileBtn.addEventListener('click', that.toggleNavMobile);
         window.addEventListener('orientationchange', that.hideNavMobile);
         navMobileCloseBtn.addEventListener('click', that.toggleNavMobile);
+        this.bindSignupFormEvent(that.query('.signup')[0]);
     }
 };
 app.init();

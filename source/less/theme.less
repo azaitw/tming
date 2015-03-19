@@ -18,14 +18,23 @@
 .C-red {
     color: @red;
 }
+.Bgc-red {
+    background: @red;
+}
 .C-wht {
     color: @white;
 }
 .C-grey1 {
     color: @lightGrey;
 }
+.Bgc-grey1 {
+    background: @lightGrey;
+}
 .C-grey2 {
     color: @grey;    
+}
+.Bgc-grey2 {
+    background: @grey;
 }
 .C-bk {
     color: @black;
@@ -54,14 +63,13 @@
 }
 .logo {
     background: url('../images/logo.png') no-repeat;
-    background-size:100%;
+    background-size: 100%;
     height:110px;
     width:287px;
     margin: 30px 0 0 0;
-    padding: 0 0 20px 0;
 }
 .nav {
-    margin:90px 0 0 0;
+    margin: 90px 0 0 0;
     width: 610px;
 }
 .nav-m-toggle {
@@ -214,6 +222,45 @@
         width: 75px;
     }
 }
+::-webkit-input-placeholder {
+   color: @grey;
+   text-indent: 5px;
+   font-size: 13px;
+}
+::-moz-placeholder {
+   color: @grey;    
+}
+:-moz-placeholder {
+   color: @grey;
+}
+:-ms-input-placeholder {
+   color: @grey;
+}
+.signup {
+    top: 610px;
+}
+.signup-form {
+    &>ul {
+        &>li {
+            height: 20px;
+            line-height: 20px;
+            width: 31.5%;
+            margin: 0 1% 5px 0;
+            &.wide {
+                width:64.5%;
+            }
+            &>input,
+            &>select {
+                line-height: 20px;   
+                text-indent: 5px;
+                font-size: 13px;             
+            }
+            &>label {
+                display: none;
+            }
+        }
+    }
+}
 @media only screen and (min-width: 650px) and (max-width: 900px) { /* tablet or small screen desktop */
     .header {
         
@@ -261,6 +308,19 @@
             background: @lightGrey;
             height: 60px;
             width: 60px;
+        }
+    }
+    .signup {
+        top: 555px;
+    }
+    .signup-form {
+        &>ul {
+            &>li {
+                width: 48%;
+                &.wide {
+                    width:48%;
+                }
+            }
         }
     }
 }
@@ -321,6 +381,25 @@
             background: @lightGrey;
             height: 65px;
             width: 65px;
+        }
+    }
+    .signup {
+        top: 335px;
+    }
+    .signup-form {
+        &>ul {
+            &>li {
+                width: 48%;
+                height: 28px;
+                margin: 0 1% 10px 0;
+                &.wide {
+                    width: 48%;
+                    height: 28px;
+                }
+                .longtxt {
+                    display: none;
+                }
+            }
         }
     }
 }
