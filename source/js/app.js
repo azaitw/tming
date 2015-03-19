@@ -160,17 +160,19 @@ var app = {
     },
     bindSignupFormEvent: function (formEl) {
         var hero1 = app.query('.hero1')[0];
+        var why = app.query('.why')[0];
         var initPosY = hero1.offsetTop + hero1.offsetHeight;
+        var formElH = formEl.offsetHeight + 30;
         var updateFormPos = function () {
             var posY = window.pageYOffset;
             if (posY >= initPosY && app.attrs.signupForm.fixed === false) {
                 app.attrs.signupForm.fixed = true;
                 formEl.style.position = 'fixed';
-                formEl.style.top = '0';
+                why.style.paddingTop = formElH + 'px';
             } else if (posY < initPosY && app.attrs.signupForm.fixed === true){
                 app.attrs.signupForm.fixed = false;
                 formEl.style.position = '';
-                formEl.style.top = '';
+                why.style.paddingTop = '';
             }
         };
         window.addEventListener('scroll', updateFormPos);

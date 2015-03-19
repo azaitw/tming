@@ -201,8 +201,9 @@
 .move {
     .transition(all 0.8s ease-in-out);
 }
-.footer {
-        border-top: 10px solid @red;
+.easy-wrap {
+    border-bottom: 10px solid @red;
+    border-top: 10px solid @red;
 }
 .ft-nav-li {
     margin: 0 15px;
@@ -237,7 +238,7 @@
    color: @grey;
 }
 .signup {
-    top: 610px;
+    top: 0;
 }
 .signup-form {
     &>ul {
@@ -260,6 +261,93 @@
             }
         }
     }
+}
+.adv-txt-wrap {
+    width: 90%;
+}
+.adv-li {
+    width: 19.5%;
+    h3 {
+        text-align: center;
+    }
+    .word {
+        font-size: 15px;
+        display: block;
+    }
+    &:before {
+        display: block;
+        content: " ";
+        width: 100px;
+        height: 100px;
+        margin: 0 auto;
+        background-position: center;
+        background-size: 100%;
+        background-repeat: no-repeat;
+    }
+    &.anytime:before {
+        background-image: url(../images/advantages-icons/Home_anytime_anywhere.gif);
+    }
+    &.individual:before {
+        background-image: url(../images/advantages-icons/Home_individual_attention.gif);
+    }
+    &.technology:before {
+        background-image: url(../images/advantages-icons/Home_technology_based.gif);
+    }
+    &.certified:before {
+        background-image: url(../images/advantages-icons/Home_certified_consultants.gif);
+    }
+    &.privacy:before {
+        background-image: url(../images/advantages-icons/Home_privacy_protection.gif);
+    }
+}
+.why-li {
+    height: 60px;
+    &:before {
+        display: block;
+        content: " ";
+        width: 60px;
+        height: 60px;
+        float: left;
+        background-image: url(../images/bullet.gif);
+        background-position: center;
+        background-size: 100%;
+        background-repeat: no-repeat;
+    }
+    .why-txt-wrap {
+        width: 90%;
+        margin: 0 0 0 10%;
+    }
+}
+.easy-li {
+    width: 32%;
+    h3 {
+        text-align: center;
+    }
+    &:before {
+        display: block;
+        content: "2";
+        width: 60px;
+        height: 60px;
+        line-height: 66px;
+        font-family: @font2;
+        color: @white;
+        margin: 0 auto;
+        text-align: center;
+        font-size: 42px;
+        background-image: url(../images/bullet.gif);
+        background-position: center;
+        background-size: 100%;
+        background-repeat: no-repeat;
+    }
+    &:first-child:before {
+        content: "1";
+    }
+    &:last-child:before {
+        content: "3";
+    }
+}
+.easy-txt-wrap {
+    width: 90%;
 }
 @media only screen and (min-width: 650px) and (max-width: 900px) { /* tablet or small screen desktop */
     .header {
@@ -297,6 +385,13 @@
     .banner2 {
         left: 0;
     }
+    .banner3 {
+        left: 0;
+        h2 {
+            font-size: 42px;
+            letter-spacing: 0;
+        }
+    }
     .ft-nav-li {
         margin: 0 5px;
     }
@@ -310,9 +405,6 @@
             width: 60px;
         }
     }
-    .signup {
-        top: 555px;
-    }
     .signup-form {
         &>ul {
             &>li {
@@ -321,6 +413,30 @@
                     width:48%;
                 }
             }
+        }
+    }
+    .adv-li {
+        width: 100%;
+        .adv-txt-wrap {
+            width: 90%;
+            margin: 0 0 0 10%;
+        }
+        h3 {
+            text-align: left;
+        }
+        .word {
+            font-size: 20px;
+            display: inline;
+            padding: 0 0 0 5px;
+            &:first-child {
+                padding: 0;
+            }
+        }
+        &:before {
+            width: 45px;
+            height: 45px;
+            margin: 0;
+            float: left;
         }
     }
 }
@@ -366,6 +482,15 @@
             text-shadow: 0 0 6px #333;
         }
     }
+    .banner3 {
+        left: 20px;
+        top: 30px;
+        width: 250px;
+        h2 {
+            font-size: 30px;
+            letter-spacing: 0;
+        }
+    }
     .ft-nav-li {
         margin: 0 5px;
         font-size: 13px;
@@ -383,9 +508,6 @@
             width: 65px;
         }
     }
-    .signup {
-        top: 335px;
-    }
     .signup-form {
         &>ul {
             &>li {
@@ -400,6 +522,30 @@
                     display: none;
                 }
             }
+        }
+    }
+    .adv-li {
+        width: 100%;
+        .adv-txt-wrap {
+            width: 88%;
+            margin: 0 0 0 12%;
+        }
+        h3 {
+            text-align: left;
+        }
+        .word {
+            font-size: 18px;
+            display: inline;
+            padding: 0 0 0 5px;
+            &:first-child {
+                padding: 0;
+            }
+        }
+        &:before {
+            width: 40px;
+            height: 40px;
+            margin: 4px 0 0 0;
+            float: left;
         }
     }
 }

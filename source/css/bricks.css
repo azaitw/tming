@@ -181,9 +181,9 @@ table.Ta-c th,table.Ta-c td {text-align: center}
 
 /* Font-weight */
 .Fw-1 {font-weight:100}
-.Fw-2 {font-weight:250}
+.Fw-2 {font-weight:200}
 .Fw-3 {font-weight:400}
-.Fw-4 {font-weight:550}
+.Fw-4 {font-weight:500}
 .Fw-5 {font-weight:700}
 
 /* Font-family */

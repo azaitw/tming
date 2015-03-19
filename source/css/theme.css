@@ -179,7 +179,8 @@
   -o-transition: all 0.8s ease-in-out;
   transition: all 0.8s ease-in-out;
 }
-.footer {
+.easy-wrap {
+  border-bottom: 10px solid #be0428;
   border-top: 10px solid #be0428;
 }
 .ft-nav-li {
@@ -215,7 +216,7 @@
   color: #5d5d5d;
 }
 .signup {
-  top: 610px;
+  top: 0;
 }
 .signup-form > ul > li {
   height: 20px;
@@ -234,6 +235,93 @@
 }
 .signup-form > ul > li > label {
   display: none;
+}
+.adv-txt-wrap {
+  width: 90%;
+}
+.adv-li {
+  width: 19.5%;
+}
+.adv-li h3 {
+  text-align: center;
+}
+.adv-li .word {
+  font-size: 15px;
+  display: block;
+}
+.adv-li:before {
+  display: block;
+  content: " ";
+  width: 100px;
+  height: 100px;
+  margin: 0 auto;
+  background-position: center;
+  background-size: 100%;
+  background-repeat: no-repeat;
+}
+.adv-li.anytime:before {
+  background-image: url(../images/advantages-icons/Home_anytime_anywhere.gif);
+}
+.adv-li.individual:before {
+  background-image: url(../images/advantages-icons/Home_individual_attention.gif);
+}
+.adv-li.technology:before {
+  background-image: url(../images/advantages-icons/Home_technology_based.gif);
+}
+.adv-li.certified:before {
+  background-image: url(../images/advantages-icons/Home_certified_consultants.gif);
+}
+.adv-li.privacy:before {
+  background-image: url(../images/advantages-icons/Home_privacy_protection.gif);
+}
+.why-li {
+  height: 60px;
+}
+.why-li:before {
+  display: block;
+  content: " ";
+  width: 60px;
+  height: 60px;
+  float: left;
+  background-image: url(../images/bullet.gif);
+  background-position: center;
+  background-size: 100%;
+  background-repeat: no-repeat;
+}
+.why-li .why-txt-wrap {
+  width: 90%;
+  margin: 0 0 0 10%;
+}
+.easy-li {
+  width: 32%;
+}
+.easy-li h3 {
+  text-align: center;
+}
+.easy-li:before {
+  display: block;
+  content: "2";
+  width: 60px;
+  height: 60px;
+  line-height: 66px;
+  font-family: 'ITC SLimbach', 'Myriad';
+  color: #ffffff;
+  margin: 0 auto;
+  text-align: center;
+  font-size: 42px;
+  background-image: url(../images/bullet.gif);
+  background-position: center;
+  background-size: 100%;
+  background-repeat: no-repeat;
+}
+.easy-li:first-child:before {
+  content: "1";
+}
+.easy-li:last-child:before {
+  content: "3";
+}
+.easy-txt-wrap {
+  width: 90%;
 }
 @media only screen and (min-width: 650px) and (max-width: 900px) {
   /* tablet or small screen desktop */
@@ -269,6 +357,13 @@
   .banner2 {
     left: 0;
   }
+  .banner3 {
+    left: 0;
+  }
+  .banner3 h2 {
+    font-size: 42px;
+    letter-spacing: 0;
+  }
   .ft-nav-li {
     margin: 0 5px;
   }
@@ -282,14 +377,35 @@
     height: 60px;
     width: 60px;
   }
-  .signup {
-    top: 555px;
-  }
   .signup-form > ul > li {
     width: 48%;
   }
   .signup-form > ul > li.wide {
     width: 48%;
+  }
+  .adv-li {
+    width: 100%;
+  }
+  .adv-li .adv-txt-wrap {
+    width: 90%;
+    margin: 0 0 0 10%;
+  }
+  .adv-li h3 {
+    text-align: left;
+  }
+  .adv-li .word {
+    font-size: 20px;
+    display: inline;
+    padding: 0 0 0 5px;
+  }
+  .adv-li .word:first-child {
+    padding: 0;
+  }
+  .adv-li:before {
+    width: 45px;
+    height: 45px;
+    margin: 0;
+    float: left;
   }
 }
 @media only screen and (max-width: 650px) {
@@ -334,6 +450,15 @@
     font-size: 30px;
     text-shadow: 0 0 6px #333;
   }
+  .banner3 {
+    left: 20px;
+    top: 30px;
+    width: 250px;
+  }
+  .banner3 h2 {
+    font-size: 30px;
+    letter-spacing: 0;
+  }
   .ft-nav-li {
     margin: 0 5px;
     font-size: 13px;
@@ -351,9 +476,6 @@
     height: 65px;
     width: 65px;
   }
-  .signup {
-    top: 335px;
-  }
   .signup-form > ul > li {
     width: 48%;
     height: 28px;
@@ -365,5 +487,29 @@
   }
   .signup-form > ul > li .longtxt {
     display: none;
+  }
+  .adv-li {
+    width: 100%;
+  }
+  .adv-li .adv-txt-wrap {
+    width: 88%;
+    margin: 0 0 0 12%;
+  }
+  .adv-li h3 {
+    text-align: left;
+  }
+  .adv-li .word {
+    font-size: 18px;
+    display: inline;
+    padding: 0 0 0 5px;
+  }
+  .adv-li .word:first-child {
+    padding: 0;
+  }
+  .adv-li:before {
+    width: 40px;
+    height: 40px;
+    margin: 4px 0 0 0;
+    float: left;
   }
 }
