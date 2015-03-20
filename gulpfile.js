@@ -119,18 +119,20 @@ gulp.task('build', ['copy'], function () {
         swallowErrors: true
     };
     return gulp.src('./source/rendered/*.html')
+    .pipe(base64())
 //    .pipe(inlinesource(optsInline))
 //    .pipe(minifyHTML(optsHtml))
     .pipe(gulp.dest('output'));
 });
 
 // Copy output/production.js and output/production.css into source/html/index.html, compress html, and generate output/index.html
-gulp.task('build-dev', ['render-template', 'concat-js', 'concat-css'], function () {
+gulp.task('build-dev', ['copy'], function () {
     var optsHtml = {
       conditionals: true,
       spare: true
     };
-    return gulp.src('./source/rendered/*')
+    return gulp.src('./source/rendered/*.html')
+    .pipe(base64())
     .pipe(gulp.dest('output'));
 });
 

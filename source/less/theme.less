@@ -66,7 +66,6 @@
     background-size: 100%;
     height:110px;
     width:287px;
-    margin: 30px 0 0 0;
 }
 .nav {
     margin: 90px 0 0 0;
@@ -82,8 +81,6 @@
     display: none;
     opacity: 0;
     background: rgba(0,0,0, 0.87);
-    padding: 0 0 20px 0;
-    height: 100%;
     .transition(opacity 0.25s ease-in-out);
 }
 .nav-li {
@@ -265,6 +262,11 @@
 .adv-txt-wrap {
     width: 90%;
 }
+.icon {
+    background-position: center;
+    background-size: 100%;
+    background-repeat: no-repeat;
+}
 .adv-li {
     width: 19.5%;
     h3 {
@@ -274,44 +276,17 @@
         font-size: 15px;
         display: block;
     }
-    &:before {
-        display: block;
-        content: " ";
+    .icon {
         width: 100px;
         height: 100px;
         margin: 0 auto;
-        background-position: center;
-        background-size: 100%;
-        background-repeat: no-repeat;
-    }
-    &.anytime:before {
-        background-image: url(../images/advantages-icons/Home_anytime_anywhere.gif);
-    }
-    &.individual:before {
-        background-image: url(../images/advantages-icons/Home_individual_attention.gif);
-    }
-    &.technology:before {
-        background-image: url(../images/advantages-icons/Home_technology_based.gif);
-    }
-    &.certified:before {
-        background-image: url(../images/advantages-icons/Home_certified_consultants.gif);
-    }
-    &.privacy:before {
-        background-image: url(../images/advantages-icons/Home_privacy_protection.gif);
     }
 }
 .why-li {
     height: 60px;
-    &:before {
-        display: block;
-        content: " ";
+    .icon {
         width: 60px;
         height: 60px;
-        float: left;
-        background-image: url(../images/bullet.gif);
-        background-position: center;
-        background-size: 100%;
-        background-repeat: no-repeat;
     }
     .why-txt-wrap {
         width: 90%;
@@ -323,9 +298,7 @@
     h3 {
         text-align: center;
     }
-    &:before {
-        display: block;
-        content: "2";
+    .icon {
         width: 60px;
         height: 60px;
         line-height: 66px;
@@ -334,16 +307,6 @@
         margin: 0 auto;
         text-align: center;
         font-size: 42px;
-        background-image: url(../images/bullet.gif);
-        background-position: center;
-        background-size: 100%;
-        background-repeat: no-repeat;
-    }
-    &:first-child:before {
-        content: "1";
-    }
-    &:last-child:before {
-        content: "3";
     }
 }
 .easy-txt-wrap {
@@ -432,7 +395,7 @@
                 padding: 0;
             }
         }
-        &:before {
+        .icon {
             width: 45px;
             height: 45px;
             margin: 0;
@@ -541,7 +504,7 @@
                 padding: 0;
             }
         }
-        &:before {
+        .icon {
             width: 40px;
             height: 40px;
             margin: 4px 0 0 0;

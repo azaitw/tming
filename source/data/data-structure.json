@@ -50,44 +50,52 @@
         {
             "title": "<span class=\"word\">Anytime</span><span class=\"word\">Anywhere</span>",
             "desc": "Whether you are at home, on the go, out of town, using a laptop or tablet... As long as you have Internet, we are here to teach. Doesn't matter if you are an early bird or night owl, we habe lessons for you.",
-            "classnames": "anytime"
+            "classnames": "anytime",
+            "image": "Home_anytime_anywhere.gif"
         },
         {
             "title": "<span class=\"word\">Individualized</span><span class=\"word\">Attention</span>",
             "desc": "The user experience is at the heart of everything we do. Our sophisticated technology platform ensures that you are matched with the best consultants and course materials to suit you.",
-            "classnames": "individual"
+            "classnames": "individual",
+            "image": "Home_individual_attention.gif"
         },
         {
             "title": "<span class=\"word\">Technology</span><span class=\"word\">Based</span>",
             "desc": "We believe that education should be innovative. Our online classroom features an integrated whiteboard, instant message, quality video and sould - all the benefits of being in a physical classroom.",
-            "classnames": "technology"
+            "classnames": "technology",
+            "image": "Home_technology_based.gif"
         },
         {
             "title": "<span class=\"word\">Certified</span><span class=\"word\">Consultants</span>",
             "desc": "Quality instruction is important to us. Our world-class consultants are all selectively chosen native Chinese speakers, who then undergo specific training with TutorMing. Each one of them is certified.",
-            "classnames": "certified"
+            "classnames": "certified",
+            "image": "Home_certified_consultants.gif"
         },
         {
             "title": "<span class=\"word\">Privacy</span><span class=\"word\">Protection</span>",
             "desc": "We offer a one-way webcam system. You can see our consultants, but our consultant cannot see your, so ylu can try speaking Chinese with confidence.",
-            "classnames": "privacy"
+            "classnames": "privacy",
+            "image": "Home_privacy_protection.gif"
         }
     ],
     "easy": [
         {
             "title": "<span class=\"Cf\">Get started</span> with TutorMing",
             "desc": "Register! Tell us a bit about yourself, your interests, and why you want to learn Chinese.",
-            "classnames": ""
+            "classnames": "",
+            "number": "1"
         },
         {
             "title": "<span class=\"Cf\">Schedule a</span> demo class",
             "desc": "Our super helpful team will help you arrange a demo class with one of our best Chinese consultants, so you can experience what learning with TutorMing is like!",
-            "classnames": ""
+            "classnames": "",
+            "number": "2"
         },
         {
             "title": "<span class=\"Cf\">Discuss pricing</span> plans and options",
             "desc": "Our product specialists will help you choose a fluency package based on your unique needs and requirements.",
-            "classnames": ""
+            "classnames": "",
+            "number": "3"
         }
     ],
     "menu": [
