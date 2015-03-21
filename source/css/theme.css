@@ -168,13 +168,6 @@
 .nav .snd .desc {
   margin: 0 100px 0 0;
 }
-.signup.fixed {
-  position: fixed;
-  -webkit-box-shadow: 0 2px 5px #000000;
-  -moz-box-shadow: 0 2px 5px #000000;
-  -ms-box-shadow: 0 2px 5px #000000;
-  box-shadow: 0 2px 5px #000000;
-}
 .slideshow-wrap {
   height: 450px;
 }
@@ -226,6 +219,12 @@
 .signup {
   top: 0;
 }
+.signup.fixed {
+  -webkit-box-shadow: 0 2px 5px #000000;
+  -moz-box-shadow: 0 2px 5px #000000;
+  -ms-box-shadow: 0 2px 5px #000000;
+  box-shadow: 0 2px 5px #000000;
+}
 .signup-form > ul > li {
   height: 20px;
   line-height: 20px;
@@ -242,6 +241,13 @@
   font-size: 13px;
 }
 .signup-form > ul > li > label {
+  display: none;
+  display: block\9;
+}
+.signup-form > ul > li.focus > label {
+  display: none;
+}
+.signup-form > ul > li.hidePlaceholder > label {
   display: none;
 }
 .adv-txt-wrap {
