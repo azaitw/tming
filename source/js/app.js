@@ -32,7 +32,6 @@ var app = {
     removeClassName: function (obj, toRemove) {
         var reg = new RegExp('(\\s|^)' + toRemove + '(\\s|$)');
         var newClass = obj.className.replace(reg, ' ');
-        console.log('newClass: ', newClass);
         obj.className = newClass;
     },
     toggleNav: function (e) {
@@ -45,7 +44,6 @@ var app = {
         } else {
             e.returnValue = false;
         }
-        console.log('clickedNavIndex: ', clickedNavIndex);
 
         if (!app.attrs.nav.animating) {
             if (!openedNavIndex) { // nothing opened
@@ -68,7 +66,7 @@ var app = {
         } else {
             e.returnValue = false;
         }
-        console.log('clicking a childless nav');
+//        console.log('clicking a childless nav');
     },
     toggleNavMobile: function () {
         if (!app.attrs.navMobile.opened) { // to show menu
