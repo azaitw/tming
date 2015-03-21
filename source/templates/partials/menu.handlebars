@@ -3,7 +3,7 @@
         <ul>
             {{#menu}}
             <li class="D-ib Ta-c nav-li">
-                <a class="nav-li-a Fz-3 Td-0 D-b W-100 H-100" href="{{url}}" data-index={{@index}}>
+                <a class="nav-li-a Fz-3 Td-0 D-b W-100 H-100" href="{{url}}" rel="{{@index}}">
                     {{name}}
                 </a>
                 {{#if children}}
@@ -18,7 +18,7 @@
                         <ul class="snd-ul D-ib">
                             {{#children}}
                             <li>
-                                <a class="Td-0" href="{{url}}">{{name}}</a>
+                                <a class="Td-0" href="{{url}}" rel="snd-li + {{@index}}">{{name}}</a>
                                 {{#if children}}
                                 <div class="trd">
                                     <ul>

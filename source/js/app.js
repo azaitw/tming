@@ -26,33 +26,26 @@ var app = {
         var str = queryStr.substring(1);
         var func;
         var node = (parentNode) ? parentNode : document;
-        if (hasWhitespace !== -1) {
-            return node.querySelectorAll(queryStr) || [{}];
-        }
-        switch (type) {
-        case '#':
-            func = 'getElementById';
-            break;
-        case '.':
-            func = 'getElementsByClassName';
-            break;
-        default:
-            func = 'getElementsByTagName';
-            str = queryStr;
-        }
-        return node[func](str);
+        return node.querySelectorAll(queryStr) || [{}];
+
     },
     removeClassName: function (obj, toRemove) {
         var reg = new RegExp('(\\s|^)' + toRemove + '(\\s|$)');
-        obj.className = obj.className.replace(reg, ' ').trim();
+        var newClass = obj.className.replace(reg, ' ');
+        console.log('newClass: ', newClass);
+        obj.className = newClass;
     },
     toggleNav: function (e) {
-        var clickedNav = e.currentTarget;
-        var clickedNavIndex = clickedNav.dataset.index;
+        var clickedNav = e.currentTarget || e.srcElement;
+        var clickedNavIndex = clickedNav.rel;
         var openedNav;
         var openedNavIndex = app.attrs.nav.opened;
-
-        e.preventDefault();
+        if (e.preventDefault) {
+            e.preventDefault();
+        } else {
+            e.returnValue = false;
+        }
+        console.log('clickedNavIndex: ', clickedNavIndex);
 
         if (!app.attrs.nav.animating) {
             if (!openedNavIndex) { // nothing opened
@@ -70,7 +63,11 @@ var app = {
         }
     },
     toggleAction: function (e) {
-        e.preventDefault();
+        if (e.preventDefault) {
+            e.preventDefault();
+        } else {
+            e.returnValue = false;
+        }
         console.log('clicking a childless nav');
     },
     toggleNavMobile: function () {
@@ -179,38 +176,45 @@ var app = {
                 }
             }
         };
-        window.addEventListener('scroll', updateFormPos);
+        this.bindEvent(window, 'scroll', updateFormPos);
+    },
+    bindEvent: function (element, eventType, action) {
+        if (element.addEventListener) {
+            element.addEventListener(eventType, action);
+        } else {
+            element.attachEvent('on' + eventType, action);
+        }
     },
     init: function () {
         var navLinks = this.query('.nav-li-a');
         var i;
         var that = this;
-        var navMobileBtn = this.query('.nav-m-toggle')[0];
-        var navMobileCloseBtn = this.query('.nav-m-close')[0];
-        var slideshows = this.query('.slideshow');
+        var navMobileBtn = that.query('.nav-m-toggle')[0];
+        var navMobileCloseBtn = that.query('.nav-m-close')[0];
+        var slideshows = that.query('.slideshow');
         var slideshowsDeckLen;
-        var bindEvent = function (el) {
+        var bindNavEvent = function (el) {
             var parent = el.parentElement;
             var elChildren = app.query('.snd', parent);
             if (elChildren.length > 0) { // has submenu
-                el.addEventListener('click', that.toggleNav);
+                that.bindEvent(el, 'click', that.toggleNav);
             } else { // childless
 //                el.addEventListener('click', that.toggleAction);
             }
         };
         for (i = 0; i < navLinks.length; i += 1) {
-            bindEvent(navLinks[i]);
+            bindNavEvent(navLinks[i]);
         }
         for (i = 0; i < slideshows.length; i += 1) {
-            slideshowsDeckLen = this.query('li', slideshows[i]).length;
+            slideshowsDeckLen = that.query('li', slideshows[i]).length;
             if (slideshowsDeckLen > 1) {
                 that.autoSlideshow(slideshows[i], i);
             }
         }
-        navMobileBtn.addEventListener('click', that.toggleNavMobile);
-        window.addEventListener('orientationchange', that.hideNavMobile);
-        navMobileCloseBtn.addEventListener('click', that.toggleNavMobile);
-        this.fixedFormWhenScroll(that.query('.signup')[0]);
+        that.bindEvent(window, 'orientationchange', that.hideNavMobile);
+        that.bindEvent(navMobileBtn, 'click', that.toggleNavMobile);
+        that.bindEvent(navMobileCloseBtn, 'click', that.toggleNavMobile);
+        that.fixedFormWhenScroll(that.query('.signup')[0]);
     }
 };
 app.init();

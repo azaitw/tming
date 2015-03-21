@@ -1,4 +1,7 @@
 /* Variables */
+.container {
+  min-width: 900px\9;
+}
 .C-red {
   color: #be0428;
 }
@@ -89,6 +92,7 @@
   color: #000000;
 }
 .nav-li.on .snd {
+  display: block\9;
   opacity: 1;
   max-height: 1000px;
   z-index: 100;
@@ -145,6 +149,7 @@
   transition: all 0.25s ease-in-out;
   max-height: 0;
   opacity: 0;
+  display: none\9;
   border-bottom: 2px solid #be0428;
   background: #c2c2c2;
   top: 160px;
@@ -191,17 +196,18 @@
   margin: 0 15px;
   font-size: 15px;
 }
-.circle-wrap {
+.social-wrap {
   white-space: nowrap;
   width: 49.5%;
 }
-.circle {
+.social {
   width: 24%;
   height: 100px;
 }
-.circle .icon {
+.social .icon {
   height: 75px;
   width: 75px;
+  background-size: 75px 75px;
 }
 ::-webkit-input-placeholder {
   color: #5d5d5d;
@@ -267,6 +273,7 @@
 .why-li .icon {
   width: 60px;
   height: 60px;
+  background-size: 60px 60px;
 }
 .why-li .why-txt-wrap {
   width: 90%;
@@ -290,6 +297,7 @@
   margin: 0 auto;
   text-align: center;
   font-size: 42px;
+  background-size: 60px 60px;
 }
 .easy-txt-wrap {
   width: 90%;
@@ -338,13 +346,14 @@
   .ft-nav-li {
     margin: 0 5px;
   }
-  .circle {
+  .social {
     width: 24%;
     height: 80px;
   }
-  .circle .icon {
+  .social .icon {
     height: 60px;
     width: 60px;
+    background-size: 60px 60px;
   }
   .signup-form > ul > li {
     width: 48%;
@@ -375,6 +384,7 @@
     height: 45px;
     margin: 0;
     float: left;
+    background-size: 45px 45px;
   }
 }
 @media only screen and (max-width: 650px) {
@@ -432,16 +442,17 @@
     margin: 0 5px;
     font-size: 13px;
   }
-  .circle-wrap {
+  .social-wrap {
     width: 100%;
   }
-  .circle {
+  .social {
     width: 24%;
     height: 80px;
   }
-  .circle .icon {
-    height: 65px;
-    width: 65px;
+  .social .icon {
+    height: 60px;
+    width: 60px;
+    background-size: 60px 60px;
   }
   .signup-form > ul > li {
     width: 48%;
@@ -478,6 +489,7 @@
     height: 40px;
     margin: 4px 0 0 0;
     float: left;
+    background-size: 40px 40px;
   }
   .easy-li {
     width: 100%;
@@ -500,5 +512,6 @@
     margin: 0;
     float: left;
     font-size: 24px;
+    background-size: 40px 40px;
   }
 }
