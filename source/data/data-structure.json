@@ -83,19 +83,19 @@
     "easy-title": "It's as easy as 1-2-3!!!",
     "easy": [
         {
-            "title": "<span class=\"Cf\">Get started</span> with TutorMing",
+            "title": "<span class=\"word\">Get started</span> with TutorMing",
             "desc": "Register! Tell us a bit about yourself, your interests, and why you want to learn Chinese.",
             "classnames": "",
             "number": "1"
         },
         {
-            "title": "<span class=\"Cf\">Schedule a</span> demo class",
+            "title": "<span class=\"word\">Schedule a</span> demo class",
             "desc": "Our super helpful team will help you arrange a demo class with one of our best Chinese consultants, so you can experience what learning with TutorMing is like!",
             "classnames": "",
             "number": "2"
         },
         {
-            "title": "<span class=\"Cf\">Discuss pricing</span> plans and options",
+            "title": "<span class=\"word\">Discuss pricing</span> plans and options",
             "desc": "Our product specialists will help you choose a fluency package based on your unique needs and requirements.",
             "classnames": "",
             "number": "3"
