@@ -147,9 +147,8 @@
 }
 .banner3 {
     left: 30px;
-    top: 100px;
+    top: 0;
     width: 400px;
-    height: 350px;
     h2 {
         font-size: 50px;
         line-height: 50px;
@@ -202,6 +201,7 @@
 }
 .slideshow-wrap {
     height: 450px;
+    height: 400px\9;
 }
 .wrap {
     width: 900px;
@@ -217,6 +217,12 @@
     margin: 0 15px;
     font-size: 15px;
 }
+.partner-wrap {
+    li {
+        margin: 0 15px;
+        height: 100px;
+    }
+}
 .social-wrap {
     white-space: nowrap;
     width: 49.5%;
@@ -227,7 +233,6 @@
     .icon {
         height: 75px;
         width: 75px;
-        background-size: 75px 75px;
     }
 }
 ::-webkit-input-placeholder {
@@ -312,7 +317,6 @@
     .icon {
         width: 60px;
         height: 60px;
-        background-size: 60px 60px;
     }
     .why-txt-wrap {
         width: 90%;
@@ -331,12 +335,12 @@
         width: 60px;
         height: 60px;
         line-height: 66px;
+        line-height: 60px\9;
         font-family: @font2;
         color: @white;
         margin: 0 auto;
         text-align: center;
         font-size: 42px;
-        background-size: 60px 60px;
     }
 }
 .easy-txt-wrap {
@@ -394,7 +398,6 @@
         .icon {
             height: 60px;
             width: 60px;
-            background-size: 60px 60px;
         }
     }
     .signup-form {
@@ -405,6 +408,13 @@
                     width:48%;
                 }
             }
+        }
+    }
+    .partner-wrap {
+        padding: 10px 0;
+        li {
+            height: 45px;
+            padding: 10px 0;
         }
     }
     .adv-li {
@@ -429,7 +439,12 @@
             height: 45px;
             margin: 0;
             float: left;
-            background-size: 45px 45px;
+        }
+    }
+    .why-li {
+        .why-txt-wrap {
+            width: 85%;
+            margin: 0 0 0 15%;
         }
     }
 }
@@ -457,17 +472,20 @@
     }
     .banner1 {
         right: 0;
-        top: 100px;
+        top: 90px;
         h2 {
-            line-height: 30px;
+            line-height: 24px;
             letter-spacing: 0.8px;
-            font-size: 30px;
+            font-size: 24px;
             text-shadow: 0 0 6px #333;
+        }
+        p {
+            line-height: 18px;
         }
     }
     .banner2 {
         left: 0;
-        top: 100px;
+        top: 80px;
         h2 {
             line-height: 30px;
             letter-spacing: 0.8px;
@@ -477,16 +495,25 @@
     }
     .banner3 {
         left: 20px;
-        top: 30px;
+        top: 0;
         width: 250px;
         h2 {
-            font-size: 30px;
+            font-size: 28px;
+            line-height: 30px;
             letter-spacing: 0;
         }
     }
     .ft-nav-li {
         margin: 0 5px;
         font-size: 13px;
+    }
+    .partner-wrap {
+        padding: 10px 0;
+        li {
+            height: 45px;
+            padding: 5px 0;
+            margin: 0 8px;
+        }
     }
     .social-wrap {
         width: 100%;
@@ -497,7 +524,6 @@
         .icon {
             height: 60px;
             width: 60px;
-            background-size: 60px 60px;
         }
     }
     .signup-form {
@@ -538,7 +564,17 @@
             height: 40px;
             margin: 4px 0 0 0;
             float: left;
-            background-size: 40px 40px;
+        }
+    }
+    .why-li {
+        height: 60px;
+        .icon {
+            width: 40px;
+            height: 40px;
+        }
+        .why-txt-wrap {
+            width: 88%;
+            margin: 0 0 0 18%;
         }
     }
     .easy-li {
@@ -561,7 +597,6 @@
             margin: 0;
             float: left;
             font-size: 24px;
-            background-size: 40px 40px;
         }
     }
 }

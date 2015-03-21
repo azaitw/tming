@@ -25,7 +25,8 @@
                 "title": "Great education partners make it possible!",
                 "desc": "Partners from the Tutor Group",
                 "url": "/images/banner3.jpg",
-                "classnames": "banner3 "
+                "classnames": "banner3 ",
+                "headerstyle": "top:100px"
             }
         ]
     },
@@ -269,6 +270,38 @@
                     "image": "Social_icons_Pintrest.png"
                 }
             ]
+        }
+    ],
+    "partners": [
+        {
+            "name": "阿里巴巴",
+            "image": "alibaba.png",
+            "style": "width:114px"
+        },
+        {
+            "name": "中國工商銀行",
+            "image": "china_biz_bank.png",
+            "style": "width:132px"
+        },
+        {
+            "name": "FedEx",
+            "image": "fedex.png",
+            "style": "width:92px"
+        },
+        {
+            "name": "IBM",
+            "image": "ibm.png",
+            "style": "width:82px"
+        },
+        {
+            "name": "SONY",
+            "image": "sony.png",
+            "style": "width:127px"
+        },
+        {
+            "name": "HP",
+            "image": "hp.png",
+            "style": "width:74px"
         }
     ],
     "footer": [
