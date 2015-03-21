@@ -35,6 +35,12 @@
 .Ts-1 {
   text-shadow: 0 0 6px #5d5d5d;
 }
+.Bs-1 {
+  -webkit-box-shadow: 0 1px 5px #000000;
+  -moz-box-shadow: 0 1px 5px #000000;
+  -ms-box-shadow: 0 1px 5px #000000;
+  box-shadow: 0 1px 5px #000000;
+}
 .header:after {
   display: block;
   content: " ";
