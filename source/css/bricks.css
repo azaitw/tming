@@ -220,6 +220,7 @@ table.Ta-c th,table.Ta-c td {text-align: center}
 .Bdr-r1 {border-radius: 1px}
 .Bdr-r3 {border-radius: 3px}
 .Bdr-r5 {border-radius: 5px;}
+.Bdr-r20 {border-radius: 20px;}
 
 /* z-index */
 .Z-0 {z-index:0}

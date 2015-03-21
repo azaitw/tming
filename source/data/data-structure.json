@@ -304,6 +304,20 @@
             "style": "width:74px"
         }
     ],
+    "actions": [
+        {
+            "name": "CUSTOMER SERVICE",
+            "url": "#"
+        },
+        {
+            "name": "FREE TRIAL",
+            "url": "#"
+        },
+        {
+            "name": "ONLINE CONSULTATION",
+            "url": "#"
+        }
+    ],
     "footer": [
         {
             "name": "Home",
