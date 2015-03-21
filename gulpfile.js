@@ -40,17 +40,15 @@ gulp.task('minify-css', ['less'], function() {
     .pipe(gulp.dest('./source/rendered'));
 });
 
-gulp.task('concat-css', ['less'], function() {
-    var opts = {
-        keepBreaks: false,
-        keepSpecialComments: 0
-    };
+// Copy output/production.js and output/production.css into source/html/index.html, compress html, and generate output/index.html
+gulp.task('copy-css', ['less'], function () {
     var cssfilesToBuild = cssfiles;
     return gulp.src(cssfilesToBuild)
     .pipe(concat('production.css'))
     .pipe(base64())
     .pipe(gulp.dest('./source/rendered'));
 });
+
 
 // Concat and compress JS files in source/data/javascript, and generate output/production.js
 gulp.task('minify-js', function () {
@@ -63,6 +61,19 @@ gulp.task('minify-js', function () {
     return gulp.src(jsfilesToBuild)
     .pipe(concat('production.js'))
     .pipe(uglify({mangle: true}))
+    .pipe(gulp.dest('./source/rendered'));
+});
+
+// Copy output/production.js and output/production.css into source/html/index.html, compress html, and generate output/index.html
+gulp.task('copy-js', function () {
+    var jsfilesToBuild;
+    if (jsfiles === [] || typeof jsfiles === 'undefined') {
+        jsfilesToBuild = './source/js/*.js';
+    } else {
+        jsfilesToBuild = jsfiles;
+    }
+    return gulp.src(jsfilesToBuild)
+    .pipe(concat('production.js'))
     .pipe(gulp.dest('./source/rendered'));
 });
 
@@ -110,7 +121,7 @@ gulp.task('render-template', ['jsonlint'], function (done) {
    });
 
 });
-gulp.task('build', ['copy'], function () {
+gulp.task('build', ['copy-and-compress'], function () {
     var optsHtml = {
       conditionals: true,
       spare: true
@@ -136,9 +147,14 @@ gulp.task('build-dev', ['copy'], function () {
     .pipe(gulp.dest('output'));
 });
 
+// Copy output/production.js and output/production.css into source/html/index.html, compress html, and generate output/index.html
+gulp.task('copy', ['render-template', 'copy-js', 'copy-css'], function () {
+    return gulp.src('./source/rendered/*')
+    .pipe(gulp.dest('output'));
+});
 
 // Copy output/production.js and output/production.css into source/html/index.html, compress html, and generate output/index.html
-gulp.task('copy', ['render-template', 'minify-js', 'minify-css'], function () {
+gulp.task('copy-and-compress', ['render-template', 'minify-js', 'minify-css'], function () {
     return gulp.src('./source/rendered/*')
     .pipe(gulp.dest('output'));
 });
