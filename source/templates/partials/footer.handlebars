@@ -1,17 +1,18 @@
 <footer>
     <div style="margin:50px auto 60px auto">
-        <ul class="circle-wrap D-ib">
-            <li class="D-ib circle"><div class="D-ib"></div></li>
-            <li class="D-ib circle"><div class="D-ib"></div></li>
-            <li class="D-ib circle"><div class="D-ib"></div></li>
-            <li class="D-ib circle"><div class="D-ib"></div></li>
-        </ul>
-        <ul class="circle-wrap D-ib">
-            <li class="D-ib circle"><div class="D-ib"></div></li>
-            <li class="D-ib circle"><div class="D-ib"></div></li>
-            <li class="D-ib circle"><div class="D-ib"></div></li>
-            <li class="D-ib circle"><div class="D-ib"></div></li>
-        </ul>
+        {{#social}}
+                <ul class="circle-wrap D-ib">
+                    {{#group}}
+                    <li class="D-ib circle">
+                        <a class="D-b" href="" title="{{name}}">
+                            <div class="icon M-0a" style="background-image:url(../images/social-icons/{{image}})">
+                                <span class="noTxt">{{name}}</span>
+                            </div>
+                        </a>
+                    </li>
+                    {{/group}}
+                </ul>
+        {{/social}}
     </div>
     <ul class="Mb-30 ft-nav Lh-7">
         {{#footer}}<li class="D-ib ft-nav-li">
@@ -19,9 +20,9 @@
         </li>{{/footer}}
     </ul>
     <div class="M-0a C-red Ta-c Fz-2 Lh-4" style="max-width: 500px">
-        <p>Let's keep in touch! Get exclusive offers, TutorMing learning materials, and Chinese tips and tricks delivered right to your inbox. [Email From] Enter email here...</p>
+        <p>{{{footnote}}}</p>
         <copyright>
-            <p>2015 &copy; TutorGroup Inc. All Rights Reserved</p>
+            <p>{{{copyright}}}</p>
         </copyright>
     </div>
 </footer>

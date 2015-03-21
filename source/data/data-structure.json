@@ -29,6 +29,7 @@
             }
         ]
     },
+    "why-title": "Why Learn Chinese?",
     "why": [
         {
             "title": "Join over 1 billion other people in speaking the language",
@@ -46,6 +47,7 @@
             "classnames": ""
         }
     ],
+    "advantages-title": "Five advantages to learning with TutorMing",
     "advantages": [
         {
             "title": "<span class=\"word\">Anytime</span><span class=\"word\">Anywhere</span>",
@@ -78,6 +80,7 @@
             "image": "Home_privacy_protection.gif"
         }
     ],
+    "easy-title": "It's as easy as 1-2-3!!!",
     "easy": [
         {
             "title": "<span class=\"Cf\">Get started</span> with TutorMing",
@@ -218,6 +221,56 @@
             "desc": "#"
         }
     ],
+    "social": [
+        {
+            "group": [
+                {
+                    "name": "Facebook",
+                    "url": "",
+                    "image": "Social_icons_Facebook.png"
+                },
+                {
+                    "name": "Twitter",
+                    "url": "",
+                    "image": "Social_icons_Twitter.png"
+                },
+                {
+                    "name": "YouTube",
+                    "url": "",
+                    "image": "Social_icons_YouTube.png"
+                },
+                {
+                    "name": "Instagram",
+                    "url": "",
+                    "image": "Social_icons_Instagram.png"
+                }
+            ]
+        },
+        {
+            "group": [
+                {
+                    "name": "Google",
+                    "url": "",
+                    "image": "Social_icons_Google.png"
+                },
+                {
+                    "name": "LinkedIn",
+                    "url": "",
+                    "image": "Social_icons_LinkedIn.png"
+                },
+                {
+                    "name": "tumblr",
+                    "url": "",
+                    "image": "Social_icons_tumblr.png"
+                },
+                {
+                    "name": "Pintrest",
+                    "url": "",
+                    "image": "Social_icons_Pintrest.png"
+                }
+            ]
+        }
+    ],
     "footer": [
         {
             "name": "Home",
@@ -247,5 +300,7 @@
             "name": "Careers",
             "url": ""
         }
-    ]
+    ],
+    "footnote": "Let's keep in touch! Get exclusive offers, TutorMing learning materials, and Chinese tips and tricks delivered right to your inbox. [Email From] Enter email here...",
+    "copyright": "2015 &copy; TutorGroup Inc. All Rights Reserved"
 }

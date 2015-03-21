@@ -192,9 +192,7 @@
   width: 24%;
   height: 100px;
 }
-.circle div {
-  border-radius: 100px;
-  background: #c2c2c2;
+.circle .icon {
   height: 75px;
   width: 75px;
 }
@@ -334,9 +332,7 @@
     width: 24%;
     height: 80px;
   }
-  .circle div {
-    border-radius: 100px;
-    background: #c2c2c2;
+  .circle .icon {
     height: 60px;
     width: 60px;
   }
@@ -433,9 +429,7 @@
     width: 24%;
     height: 80px;
   }
-  .circle div {
-    border-radius: 100px;
-    background: #c2c2c2;
+  .circle .icon {
     height: 65px;
     width: 65px;
   }
