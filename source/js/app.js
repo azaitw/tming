@@ -165,14 +165,17 @@ var app = {
         var formElH = formEl.offsetHeight + 30;
         var updateFormPos = function () {
             var posY = window.pageYOffset;
-            if (posY >= initPosY && app.attrs.signupForm.fixed === false) {
-                app.attrs.signupForm.fixed = true;
-                formEl.style.position = 'fixed';
-                why.style.paddingTop = formElH + 'px';
-            } else if (posY < initPosY && app.attrs.signupForm.fixed === true){
-                app.attrs.signupForm.fixed = false;
-                formEl.style.position = '';
-                why.style.paddingTop = '';
+            var screenHeight = window.innerHeight;
+            if (screenHeight > 650) {
+                if (posY >= initPosY && app.attrs.signupForm.fixed === false) {
+                    app.attrs.signupForm.fixed = true;
+                    formEl.style.position = 'fixed';
+                    why.style.paddingTop = formElH + 'px';
+                } else if (posY < initPosY && app.attrs.signupForm.fixed === true){
+                    app.attrs.signupForm.fixed = false;
+                    formEl.style.position = '';
+                    why.style.paddingTop = '';
+                }
             }
         };
         window.addEventListener('scroll', updateFormPos);
