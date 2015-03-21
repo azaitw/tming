@@ -30,6 +30,7 @@ gulp.task('less', function() {
 gulp.task('minify-css', ['less'], function() {
     var opts = {
         keepBreaks: false,
+        compatibility: 'ie8',
         keepSpecialComments: 0
     };
     var cssfilesToBuild = cssfiles;
