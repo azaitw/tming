@@ -158,22 +158,23 @@ var app = {
             shuffleDeck();
         }, app.attrs.slideshow.interval);
     },
-    bindSignupFormEvent: function (formEl) {
+    fixedFormWhenScroll: function (formEl) {
         var hero1 = app.query('.hero1')[0];
         var why = app.query('.why')[0];
         var initPosY = hero1.offsetTop + hero1.offsetHeight;
         var formElH = formEl.offsetHeight + 30;
+        var signupClassname = formEl.className;
         var updateFormPos = function () {
             var posY = window.pageYOffset;
             var screenHeight = window.innerHeight;
             if (screenHeight > 650) {
                 if (posY >= initPosY && app.attrs.signupForm.fixed === false) {
                     app.attrs.signupForm.fixed = true;
-                    formEl.style.position = 'fixed';
+                    formEl.className += ' fixed';
                     why.style.paddingTop = formElH + 'px';
                 } else if (posY < initPosY && app.attrs.signupForm.fixed === true){
                     app.attrs.signupForm.fixed = false;
-                    formEl.style.position = '';
+                    formEl.className = signupClassname;
                     why.style.paddingTop = '';
                 }
             }
@@ -209,7 +210,7 @@ var app = {
         navMobileBtn.addEventListener('click', that.toggleNavMobile);
         window.addEventListener('orientationchange', that.hideNavMobile);
         navMobileCloseBtn.addEventListener('click', that.toggleNavMobile);
-        this.bindSignupFormEvent(that.query('.signup')[0]);
+        this.fixedFormWhenScroll(that.query('.signup')[0]);
     }
 };
 app.init();

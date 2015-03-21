@@ -163,6 +163,13 @@
 .nav .snd .desc {
   margin: 0 100px 0 0;
 }
+.signup.fixed {
+  position: fixed;
+  -webkit-box-shadow: 0 2px 5px #000000;
+  -moz-box-shadow: 0 2px 5px #000000;
+  -ms-box-shadow: 0 2px 5px #000000;
+  box-shadow: 0 2px 5px #000000;
+}
 .slideshow-wrap {
   height: 450px;
 }
