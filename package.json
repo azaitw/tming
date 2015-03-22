@@ -10,7 +10,7 @@
     "keywords": [],
     "main": "server.js",
     "scripts": {
-        "start-dev": "gulp build-dev; node server.js",
+        "dev": "gulp build-dev; node server.js",
         "start": "gulp build; node server.js",
         "build": "gulp build",
         "build-dev": "gulp build-dev",
