@@ -4,6 +4,7 @@
 var app = {
     attrs: {
         isIE8_9: false,
+        isSmartphone: false,
         nav: {
             opened: undefined,
             animating: false
@@ -161,7 +162,7 @@ var app = {
         var formElH = formEl.offsetHeight + 30;
         var signupClassname = formEl.className;
         var updateFormPos = function () {
-            var posY = window.pageYOffset;
+            var posY = window.pageYOffset || window.document.documentElement.scrollTop;
             if (posY >= initPosY && app.attrs.signupForm.fixed === false) {
                 app.attrs.signupForm.fixed = true;
                 formEl.className += ' fixed';
