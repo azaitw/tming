@@ -4,7 +4,7 @@
 var app = {
     attrs: {
         isIE8_9: false,
-        isSmartphone: false,
+        isMobile: false,
         nav: {
             opened: undefined,
             animating: false
@@ -218,7 +218,14 @@ var app = {
             }
         };
         var isIE8_9 = (document.all && !window.atob)? true : false;
-        that.attrs.isSmartphone = (navigator.userAgent.indexOf('iPhone') > 0 || navigator.userAgent.indexOf('Android') > 0) ? true : false;
+        that.attrs.isMobile = (
+            navigator.userAgent.indexOf('iPhone') > 0 ||
+            navigator.userAgent.indexOf('Android') > 0 ||
+            navigator.userAgent.indexOf('BlackBerry') > 0 ||
+            navigator.userAgent.indexOf('iPad') > 0 ||
+            navigator.userAgent.indexOf('iPod') > 0 ||
+            navigator.userAgent.indexOf('IEMobile') > 0
+        ) ? true : false;
         that.attrs.isIE8_9 = isIE8_9;
         for (i = 0; i < navLinks.length; i += 1) {
             bindNavEvent(navLinks[i]);
@@ -232,7 +239,7 @@ var app = {
         that.bindEvent(window, 'orientationchange', that.hideNavMobile);
         that.bindEvent(navMobileBtn, 'click', that.toggleNavMobile);
         that.bindEvent(navMobileCloseBtn, 'click', that.toggleNavMobile);
-        if (!that.attrs.isSmartphone) {
+        if (!that.attrs.isMobile) {
             that.fixedFormWhenScroll(that.query('.signup')[0]);
         }
         if (isIE8_9) { // only for IE8 and 9
