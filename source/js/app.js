@@ -162,17 +162,14 @@ var app = {
         var signupClassname = formEl.className;
         var updateFormPos = function () {
             var posY = window.pageYOffset;
-            var screenHeight = window.innerHeight;
-            if (screenHeight > 650) {
-                if (posY >= initPosY && app.attrs.signupForm.fixed === false) {
-                    app.attrs.signupForm.fixed = true;
-                    formEl.className += ' fixed';
-                    why.style.paddingTop = formElH + 'px';
-                } else if (posY < initPosY && app.attrs.signupForm.fixed === true){
-                    app.attrs.signupForm.fixed = false;
-                    formEl.className = signupClassname;
-                    why.style.paddingTop = '';
-                }
+            if (posY >= initPosY && app.attrs.signupForm.fixed === false) {
+                app.attrs.signupForm.fixed = true;
+                formEl.className += ' fixed';
+                why.style.paddingTop = formElH + 'px';
+            } else if (posY < initPosY && app.attrs.signupForm.fixed === true){
+                app.attrs.signupForm.fixed = false;
+                formEl.className = signupClassname;
+                why.style.paddingTop = '';
             }
         };
         this.bindEvent(window, 'scroll', updateFormPos);
@@ -220,6 +217,7 @@ var app = {
             }
         };
         var isIE8_9 = (document.all && !window.atob)? true : false;
+        that.attrs.isSmartphone = (navigator.userAgent.indexOf('iPhone') > 0 || navigator.userAgent.indexOf('Android') > 0) ? true : false;
         that.attrs.isIE8_9 = isIE8_9;
         for (i = 0; i < navLinks.length; i += 1) {
             bindNavEvent(navLinks[i]);
@@ -233,7 +231,9 @@ var app = {
         that.bindEvent(window, 'orientationchange', that.hideNavMobile);
         that.bindEvent(navMobileBtn, 'click', that.toggleNavMobile);
         that.bindEvent(navMobileCloseBtn, 'click', that.toggleNavMobile);
-        that.fixedFormWhenScroll(that.query('.signup')[0]);
+        if (!that.attrs.isSmartphone) {
+            that.fixedFormWhenScroll(that.query('.signup')[0]);
+        }
         if (isIE8_9) { // only for IE8 and 9
             placeholderLabels = that.query('.signup-form .placeholder label');
             placeholderInput = that.query('.signup-form .placeholder input');
