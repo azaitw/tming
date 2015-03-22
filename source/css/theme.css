@@ -266,7 +266,7 @@
   box-shadow: 0 2px 5px #000000;
 }
 .signup-form > ul > li {
-  height: 20px;
+  height: 24px;
   line-height: 20px;
   width: 31.5%;
   margin: 0 1% 5px 0;
@@ -276,8 +276,18 @@
 }
 .signup-form > ul > li > input,
 .signup-form > ul > li > select {
+  width: 95%;
+  height: 20px;
   font-size: 13px;
   padding: 0 0 3px 0\9;
+}
+.signup-form > ul > li > input.checkbox,
+.signup-form > ul > li > select.checkbox {
+  height: 20px;
+  width: 20px;
+}
+.signup-form > ul > li > select {
+  width: 100%;
 }
 .signup-form > ul > li > label {
   display: none;
@@ -475,26 +485,31 @@
   }
   .banner1 {
     right: 0;
-    top: 90px;
+    top: 80px;
   }
   .banner1 h2 {
-    line-height: 24px;
+    line-height: 22px;
     letter-spacing: 0.8px;
-    font-size: 24px;
+    font-size: 22px;
     text-shadow: 0 0 6px #333;
   }
   .banner1 p {
+    font-size: 13px;
     line-height: 18px;
   }
   .banner2 {
     left: 0;
     top: 80px;
+    width: 200px;
   }
   .banner2 h2 {
-    line-height: 30px;
+    line-height: 26px;
     letter-spacing: 0.8px;
-    font-size: 30px;
+    font-size: 26px;
     text-shadow: 0 0 6px #333;
+  }
+  .banner2 p {
+    font-size: 13px;
   }
   .banner3 {
     left: 20px;
@@ -505,6 +520,9 @@
     font-size: 28px;
     line-height: 30px;
     letter-spacing: 0;
+  }
+  .advantages h2 {
+    font-size: 24px;
   }
   .ft-nav-li {
     margin: 0 5px;
@@ -532,7 +550,7 @@
   .signup-form > ul > li {
     width: 48%;
     height: 28px;
-    margin: 0 1% 10px 0;
+    margin: 0 5px 10px 0;
   }
   .signup-form > ul > li.wide {
     width: 48%;
@@ -540,6 +558,18 @@
   }
   .signup-form > ul > li .longtxt {
     display: none;
+  }
+  .signup-form > ul > li input {
+    width: 95%;
+    height: 24px;
+  }
+  .signup-form > ul > li input.checkbox {
+    height: 20px;
+    width: 20px;
+  }
+  .signup-form > ul > li select {
+    width: 100%;
+    height: 24px;
   }
   .adv-li {
     width: 100%;
