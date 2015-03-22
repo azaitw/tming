@@ -276,9 +276,8 @@
 }
 .signup-form > ul > li > input,
 .signup-form > ul > li > select {
-  line-height: 20px;
-  text-indent: 5px;
   font-size: 13px;
+  padding: 0 0 3px 0\9;
 }
 .signup-form > ul > li > label {
   display: none;
