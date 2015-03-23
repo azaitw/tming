@@ -6,6 +6,12 @@
                 "desc": "Enjoy learning Chinese in the most fun and easiest way possible. Anytime, Anywhere, TutorMing.<a class=\"D-ib Bdr-r5 Bgc-red C-wht Td-0 P-5 Pl-10 Pr-10 Mt-10 Fz-3 Ls-1 Bs-1\" href=\"\">TRY FOR FREE TODAY</a>",
                 "url": "/images/banner1.jpg",
                 "classnames": "banner1 "
+            },
+            {
+                "title": "<span class=\"Cf\">TutorGlass</span><span class=\"Cf Fz-4 Ls-3\">The Future of Learning</span>",
+                "desc": "Enjoy learning Chinese in the most fun and easiest way possible. Anytime, Anywhere, TutorMing.",
+                "url": "/images/banner2.jpg",
+                "classnames": "banner2 "
             }
         ]
     },

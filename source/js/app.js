@@ -21,7 +21,8 @@ var app = {
         },
         signupForm: {
             fixed: false
-        }
+        },
+        animMethod: {}
     },
     query: function (queryStr, parentNode) {
         var hasWhitespace = queryStr.indexOf(' ');
@@ -132,41 +133,59 @@ var app = {
             }, 200);
         }
     },
+    animateMethods: function (browser) {
+        var prop;
+        var value = [];
+        switch (browser) {
+        case 'safari':
+            prop = '-webkit-transform';
+            value = ['translate3d(', ', 0, 0)'];
+            break;
+        case 'chrome':
+            prop = '-webkit-transform';
+            value = ['translate(', ', 0)'];
+            break;
+        default:
+            prop = 'left';
+            value = ['', '%'];
+        }
+        this.attrs.animMethod = {
+            prop: prop,
+            value: value
+        };
+    },
+    animateEl: function (el, pos) {
+        var prop = app.attrs.animMethod.prop;
+        var value = app.attrs.animMethod.value;
+        el.style[prop] = value[0] + pos + value[1];
+    },
     autoSlideshow: function (el, key) {
+        var that = this;
         var children = app.query('li', el);
-        var returnNextPosition = function () {
-            var data = app.attrs.slideshow.state[key];
-            if (data.position >= (data.size - 1)) {
-                app.attrs.slideshow.state[key].position = 0;
-            } else {
-                app.attrs.slideshow.state[key].position += 1;
-            }  
-        };
-        var shuffleDeck = function () {
-            var position = app.attrs.slideshow.state[key].position;
-            var size = app.attrs.slideshow.state[key].size;
-            if (position === (size - 1)) {
-                setTimeout(function () {
-                    app.removeClassName(el, 'move');
-                    el.style.left = 0;
-                    app.attrs.slideshow.state[key].position = 0;
-                }, app.attrs.slideshow.animation);
-                setTimeout(function () {
-                    el.className += ' move';
-                }, app.attrs.slideshow.animation + 100);
-            }
-        };
+        var childrenLen = children.length;
+        var elClassName = el.className;
         el.appendChild(children[0].cloneNode(true));
-        el.style.left = '0%';
+        that.animateEl(el, '0%');
         el.className += ' move';
         app.attrs.slideshow.state[key] = {
             position: 0,
             size: children.length
         };
         setInterval(function () {
-            returnNextPosition(app.attrs.slideshow.state[key].position);
-            el.style.left = '-' + (app.attrs.slideshow.state[key].position * 100) + '%';
-            shuffleDeck();
+            var pos;
+            that.attrs.slideshow.state[key].position += 1;
+            pos = '-' + (app.attrs.slideshow.state[key].position * 100) + '%';
+            that.animateEl(el, pos);
+            if (app.attrs.slideshow.state[key].position === childrenLen) {
+                setTimeout(function () {
+                    el.className = elClassName;
+                    that.animateEl(el, '0%');
+                    app.attrs.slideshow.state[key].position = 0;
+                }, app.attrs.slideshow.animation);
+                setTimeout(function () {
+                    el.className += ' move';
+                }, app.attrs.slideshow.animation + 100);
+            }
         }, app.attrs.slideshow.interval);
     },
     fixedFormWhenScroll: function (formEl) {
@@ -215,16 +234,30 @@ var app = {
             }
         }
     },
-    init: function () {
-        var navLinks = this.query('.nav-li-a');
-        var i;
-        var that = this;
-        var navMobileBtn = that.query('.nav-m-toggle')[0];
-        var navMobileCloseBtn = that.query('.nav-m-close')[0];
-        var slideshows = that.query('.slideshow');
+    bindSlideshow: function () {
+        var slideshows = this.query('.slideshow');
         var slideshowsDeckLen;
-        var placeholderLabels;
-        var placeholderInput;
+        var i;
+        if (navigator.userAgent.indexOf('Safari') > 0) {
+            if (navigator.userAgent.indexOf('Chrome') > 0) {
+                this.animateMethods('chrome');
+            } else {
+                this.animateMethods('safari');
+            }
+        } else {
+            this.animateMethods('default');
+        }
+        for (i = 0; i < slideshows.length; i += 1) {
+            slideshowsDeckLen = this.query('li', slideshows[i]).length;
+            if (slideshowsDeckLen > 1) {
+                this.autoSlideshow(slideshows[i], i);
+            }
+        }
+    },
+    bindNav: function () {
+        var that = this;
+        var i;
+        var navLinks = that.query('.nav-li-a');
         var bindNavEvent = function (el) {
             var parent = el.parentElement;
             var elChildren = app.query('.snd', parent);
@@ -234,7 +267,31 @@ var app = {
 //                el.addEventListener('click', that.toggleAction);
             }
         };
+        for (i = 0; i < navLinks.length; i += 1) {
+            bindNavEvent(navLinks[i]);
+        }
+    },
+    bindIEEvents: function () {
+        var that = this;
+        var i;
+        var placeholderLabels;
+        var placeholderInput;
         var isIE8_9 = (document.all && !window.atob)? true : false;
+        this.attrs.isIE8_9 = isIE8_9;
+        if (isIE8_9) { // only for IE8 and 9
+            placeholderLabels = that.query('.signup-form .placeholder label');
+            placeholderInput = that.query('.signup-form .placeholder input');
+            for (i = 0; i < placeholderLabels.length; i += 1) {
+                that.bindEvent(placeholderLabels[i], 'click', that.togglePlaceholder);
+                that.bindEvent(placeholderInput[i], 'click', that.togglePlaceholder);
+                that.bindEvent(placeholderInput[i], 'blur', that.togglePlaceholder);
+            }
+        }
+    },
+    bindMobileNavEvent: function () {
+        var that = this;
+        var navMobileCloseBtn = that.query('.nav-m-close')[0];
+        var navMobileBtn = that.query('.nav-m-toggle')[0];
         that.attrs.isMobile = (
             navigator.userAgent.indexOf('iPhone') > 0 ||
             navigator.userAgent.indexOf('Android') > 0 ||
@@ -243,32 +300,19 @@ var app = {
             navigator.userAgent.indexOf('iPod') > 0 ||
             navigator.userAgent.indexOf('IEMobile') > 0
         ) ? true : false;
-        that.attrs.isIE8_9 = isIE8_9;
-        for (i = 0; i < navLinks.length; i += 1) {
-            bindNavEvent(navLinks[i]);
-        }
-        for (i = 0; i < slideshows.length; i += 1) {
-            slideshowsDeckLen = that.query('li', slideshows[i]).length;
-            if (slideshowsDeckLen > 1) {
-                that.autoSlideshow(slideshows[i], i);
-            }
-        }
-        that.bindEvent(window, 'orientationchange', that.hideNavMobile);
-        that.bindEvent(navMobileBtn, 'click', that.toggleNavMobile);
-        that.bindEvent(navMobileCloseBtn, 'click', that.toggleNavMobile);
         if (!that.attrs.isMobile && that.query('.signup').length > 0) {
             that.fixedFormWhenScroll(that.query('.signup')[0]);
         }
-        if (isIE8_9) { // only for IE8 and 9
-            placeholderLabels = that.query('.signup-form .placeholder label');
-            placeholderInput = that.query('.signup-form .placeholder input');
-            for (i = 0; i < placeholderLabels.length; i += 1) {
-                that.bindEvent(placeholderLabels[i], 'click', that.togglePlaceholder);
-                that.bindEvent(placeholderInput[i], 'click', that.togglePlaceholder);
-                that.bindEvent(placeholderInput[i], 'blur', that.togglePlaceholder);
-
-            }
-        }
+        that.bindEvent(navMobileBtn, 'click', that.toggleNavMobile);
+        that.bindEvent(navMobileCloseBtn, 'click', that.toggleNavMobile);
+    },
+    init: function () {
+        var that = this;  
+        that.bindSlideshow();
+        that.bindNav();
+        that.bindEvent(window, 'orientationchange', that.hideNavMobile);
+        that.bindMobileNavEvent();
+        that.bindIEEvents();
     }
 };
 app.init();
