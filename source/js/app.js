@@ -239,7 +239,7 @@ var app = {
         that.bindEvent(window, 'orientationchange', that.hideNavMobile);
         that.bindEvent(navMobileBtn, 'click', that.toggleNavMobile);
         that.bindEvent(navMobileCloseBtn, 'click', that.toggleNavMobile);
-        if (!that.attrs.isMobile) {
+        if (!that.attrs.isMobile && that.query('.signup').length > 0) {
             that.fixedFormWhenScroll(that.query('.signup')[0]);
         }
         if (isIE8_9) { // only for IE8 and 9
