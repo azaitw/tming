@@ -3,6 +3,7 @@
 
 var app = {
     attrs: {
+        disableScroll: false,
         isIE8_9: false,
         isMobile: false,
         nav: {
@@ -70,12 +71,25 @@ var app = {
         }
 //        console.log('clicking a childless nav');
     },
+    disableEvent: function (e) {
+        e.preventDefault();        
+    },
+    toggleDisableScroll: function () {
+        if (app.attrs.disableScroll) { // disabled, to enable
+            document.body.removeEventListener('touchmove', app.disableEvent);
+            app.attrs.disableScroll = false;
+        } else {
+            document.body.addEventListener('touchmove', app.disableEvent);
+            app.attrs.disableScroll = true;
+        }
+    },
     toggleNavMobile: function () {
         if (!app.attrs.navMobile.opened) { // to show menu
             app.showNavMobile();
         } else { // to hide menu
             app.hideNavMobile();
         }
+        app.toggleDisableScroll();
     },
     showNavMobile: function () {
         var navMobile;
