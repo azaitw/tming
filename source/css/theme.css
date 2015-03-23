@@ -268,29 +268,24 @@
 }
 .signup-form > ul > li {
   height: 24px;
-  line-height: 20px;
-  width: 31.5%;
-  margin: 0 0 5px 0;
+  line-height: 24px;
+  width: 32%;
+  margin: 0 1% 5px 0;
   padding: 0;
 }
 .signup-form > ul > li.wide {
-  width: 66%;
+  width: 65.4%;
 }
 .signup-form > ul > li > input,
 .signup-form > ul > li > select {
-  width: 95%;
-  height: 20px;
   font-size: 13px;
   padding: 0 0 3px 0\9;
-}
-.signup-form > ul > li > input.checkbox,
-.signup-form > ul > li > select.checkbox {
-  height: 20px;
-  width: 20px;
+  border-radius: 5px;
 }
 .signup-form > ul > li > label {
   display: none;
   display: block\9;
+  text-indent: 2px;
 }
 .signup-form > ul > li.focus > label {
   display: none;
