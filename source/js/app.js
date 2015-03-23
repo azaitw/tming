@@ -158,7 +158,8 @@ var app = {
     fixedFormWhenScroll: function (formEl, appendingModule) {
         var hero1 = app.query('.hero1')[0];
         var initPosY = hero1.offsetTop + hero1.offsetHeight;
-        var formElH = formEl.offsetHeight + 30;
+        var appendingModulePaddingTop = window.getComputedStyle(appendingModule, null).getPropertyValue('padding-top');
+        var formElH = formEl.offsetHeight + appendingModulePaddingTop;
         var signupClassname = formEl.className;
         var updateFormPos = function () {
             var posY = window.pageYOffset || window.document.documentElement.scrollTop;
