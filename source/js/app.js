@@ -174,8 +174,9 @@ var app = {
         var initPosY = hero1.offsetTop + hero1.offsetHeight;
         var body = app.query('body')[0];
         var newForm = formEl.cloneNode(true);
-        newForm.className += ' fixed';
-        body.appendChild(newForm);
+        var updateHeight = function () {
+            initPosY = hero1.offsetTop + hero1.offsetHeight;
+        };
         var updateFormPos = function () {
             var posY = window.pageYOffset || window.document.documentElement.scrollTop;
             if (posY >= initPosY && app.attrs.signupForm.fixed === false) {
@@ -186,7 +187,10 @@ var app = {
                 newForm.style.display = '';
             }
         };
+        newForm.className += ' fixed';
+        body.appendChild(newForm);
         this.bindEvent(window, 'scroll', updateFormPos);
+        this.bindEvent(window, 'resize', updateHeight);
     },
     togglePlaceholder: function (e) {
         var parentNode = e.srcElement.parentNode;
