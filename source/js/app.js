@@ -155,9 +155,8 @@ var app = {
             shuffleDeck();
         }, app.attrs.slideshow.interval);
     },
-    fixedFormWhenScroll: function (formEl) {
+    fixedFormWhenScroll: function (formEl, appendingModule) {
         var hero1 = app.query('.hero1')[0];
-        var why = app.query('.why')[0];
         var initPosY = hero1.offsetTop + hero1.offsetHeight;
         var formElH = formEl.offsetHeight + 30;
         var signupClassname = formEl.className;
@@ -166,11 +165,15 @@ var app = {
             if (posY >= initPosY && app.attrs.signupForm.fixed === false) {
                 app.attrs.signupForm.fixed = true;
                 formEl.className += ' fixed';
-                why.style.paddingTop = formElH + 'px';
+                if (typeof appendingModule !== 'undefined') {
+                    appendingModule.style.paddingTop = formElH + 'px';
+                }
             } else if (posY < initPosY && app.attrs.signupForm.fixed === true){
                 app.attrs.signupForm.fixed = false;
                 formEl.className = signupClassname;
-                why.style.paddingTop = '';
+                if (typeof appendingModule !== 'undefined') {
+                    appendingModule.style.paddingTop = '';
+                }
             }
         };
         this.bindEvent(window, 'scroll', updateFormPos);
@@ -240,7 +243,7 @@ var app = {
         that.bindEvent(navMobileBtn, 'click', that.toggleNavMobile);
         that.bindEvent(navMobileCloseBtn, 'click', that.toggleNavMobile);
         if (!that.attrs.isMobile && that.query('.signup').length > 0) {
-            that.fixedFormWhenScroll(that.query('.signup')[0]);
+            that.fixedFormWhenScroll(that.query('.signup')[0], that.query('.why')[0]);
         }
         if (isIE8_9) { // only for IE8 and 9
             placeholderLabels = that.query('.signup-form .placeholder label');
