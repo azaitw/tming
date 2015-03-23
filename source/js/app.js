@@ -169,26 +169,21 @@ var app = {
             shuffleDeck();
         }, app.attrs.slideshow.interval);
     },
-    fixedFormWhenScroll: function (formEl, appendingModule) {
+    fixedFormWhenScroll: function (formEl) {
         var hero1 = app.query('.hero1')[0];
         var initPosY = hero1.offsetTop + hero1.offsetHeight;
-        var appendingModulePaddingTop = window.getComputedStyle(appendingModule, null).getPropertyValue('padding-top');
-        var formElH = formEl.offsetHeight + appendingModulePaddingTop;
-        var signupClassname = formEl.className;
+        var body = app.query('body')[0];
+        var newForm = formEl.cloneNode(true);
+        newForm.className += ' fixed';
+        body.appendChild(newForm);
         var updateFormPos = function () {
             var posY = window.pageYOffset || window.document.documentElement.scrollTop;
             if (posY >= initPosY && app.attrs.signupForm.fixed === false) {
                 app.attrs.signupForm.fixed = true;
-                formEl.className += ' fixed';
-                if (typeof appendingModule !== 'undefined') {
-                    appendingModule.style.paddingTop = formElH + 'px';
-                }
+                newForm.style.display = 'block';
             } else if (posY < initPosY && app.attrs.signupForm.fixed === true){
                 app.attrs.signupForm.fixed = false;
-                formEl.className = signupClassname;
-                if (typeof appendingModule !== 'undefined') {
-                    appendingModule.style.paddingTop = '';
-                }
+                newForm.style.display = '';
             }
         };
         this.bindEvent(window, 'scroll', updateFormPos);
@@ -258,7 +253,7 @@ var app = {
         that.bindEvent(navMobileBtn, 'click', that.toggleNavMobile);
         that.bindEvent(navMobileCloseBtn, 'click', that.toggleNavMobile);
         if (!that.attrs.isMobile && that.query('.signup').length > 0) {
-            that.fixedFormWhenScroll(that.query('.signup')[0], that.query('.why')[0]);
+            that.fixedFormWhenScroll(that.query('.signup')[0]);
         }
         if (isIE8_9) { // only for IE8 and 9
             placeholderLabels = that.query('.signup-form .placeholder label');
