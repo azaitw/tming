@@ -147,7 +147,7 @@ var app = {
             break;
         default:
             prop = 'left';
-            value = ['', '%'];
+            value = ['', ''];
         }
         this.attrs.animMethod = {
             prop: prop,
