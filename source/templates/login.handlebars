@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>Tutor Ming</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+        <link rel="stylesheet" href="./login.css" inline></link>
+    </head>
+    <body>
+        <div class="container">
+            <div class="body" style="padding:30px 0 100px 0; background:url(./images/login-bg.jpg) no-repeat center">
+                <div class="header Cf Pos-r">
+                    <header>
+                        <div class="M-0a Cf wrap Ta-c">
+                            <h1 class="logo D-ib Mt-30 Ta-c"><span class="noTxt">Tutor Ming</span></h1>
+                            <h2 class="C-grey2 Font-2 Fw-1 Fz-7a Ls-3 Mb-1">Login to TutorMing</h2>
+                            <h3 class="C-grey2 Font-2 Fw-1 Fz-6 Ls-2 Mt-5">The easiest way to learn Chinese online.</h3>
+                        </div>
+                    </header>
+                </div>
+                <div class="Pos-r M-0a Ta-c Bs-1" style="width:372px;height:386px">
+                    <div class="hd Bgc-grey1 Pt-20 Pb-15">
+                        <div class="M-0a" style="background-image:url(../images/login.png); background-position:center; background-size:100%; background-repeat:no-repeat; width:104px; height:104px;"></div>
+                    </div>
+                    <div class="bd Bgc-grey1">
+                        <form class="login-form M-0a" style="width:262px; padding: 0 0 12px 0">
+                            <ul>
+                                <li class="Pos-r Va-t placeholder" style="height:38px">
+                                    <label class="Pos-a L-0 Z-2 Fz-2 C-grey2 D-b W-100 H-100 Ta-l" style="line-height:38px">Email</label>
+                                    <input class="D-b Bdr-0 Pos-r W-100 H-100 P-0 Z-1 Pos-r" type="text" placeholder="Email" style="line-height:38px"/>
+                                </li>
+                                <li class="Pos-r Va-t placeholder" style="margin: 12px 0 12px 0;height:38px">
+                                    <label class="Pos-a L-0 Z-2 Fz-2 C-grey2 D-b W-100 H-100 Ta-l" style="line-height:38px">Password</label>
+                                    <input class="D-b Bdr-0 Pos-r W-100 H-100 P-0 Z-1 Pos-r" type="text" placeholder="Password" style="line-height:38px"/>
+                                </li>
+                                <li class="Pos-r Va-t placeholder" style="height:38px">
+            <input class="Bgc-red C-wht Fz-2 D-b W-100 H-100 Bdr-0 submit" type="submit" value="Sign In" style="text-indent:0" />
+                                </li>
+                                <li class="Pos-r Va-t Ta-l placeholder" style="height:38px; line-height:38px; margin:6px 0;">
+                                    <input class="Bdr-0 P-0" type="checkbox" />
+                                    <span class="C-grey2 Fz-2">Stay signed in</span>
+                                    <a href="" class="C-red Td-0 Fz-2 F-r">Need help?</a>
+                                </li>
+                            </ul>
+                        </form>
+                    </div>
+                    <div class="ft Pos-a B-0 Ta-c W-100 C-red Bgc-wht" style="height:60px;line-height:45px">Register with TutorMing</div>
+                </div>
+            </div>
+            <div class="footer Bdr-t-r5" style="padding:20px 0 50px 0">
+                <div class="M-0a Pt-20 Cf Ta-c">
+                    <footer>
+                        <ul class="Mt-30 Mb-30 Lh-7">
+                            {{#footer}}<li class="D-ib Ml-15 Mr-15">
+                                <a class="C-red Td-0" href="{{url}}">{{name}}</a>
+                            </li>{{/footer}}
+                        </ul>
+                        <div class="M-0a C-red Ta-c Fz-2 Lh-4">
+                            <copyright>
+                                <p>{{{copyright}}}</p>
+                            </copyright>
+                        </div>
+                    </footer>
+                </div>
+            </div>
+        </div>
+    </body>
+    <script src="./login.js"></script>
+</html>

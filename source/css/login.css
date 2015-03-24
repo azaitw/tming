@@ -1,0 +1,85 @@
+/* Variables */
+.C-red {
+  color: #be0428;
+}
+.Bgc-red {
+  background: #be0428;
+}
+.C-wht {
+  color: #ffffff;
+}
+.Bgc-wht {
+  background: #ffffff;
+}
+.C-grey1 {
+  color: #c2c2c2;
+}
+.Bgc-grey1 {
+  background: #c2c2c2;
+}
+.C-grey2 {
+  color: #5d5d5d;
+}
+.Bgc-grey2 {
+  background: #5d5d5d;
+}
+.C-bk {
+  color: #000000;
+}
+.Font-1 {
+  font-family: 'Seravek', 'Lucida Grande';
+}
+.Font-2 {
+  font-family: 'ITC SLimbach', 'Myriad';
+}
+.Bs-1 {
+  -webkit-box-shadow: 0 3px 10px #5d5d5d;
+  -moz-box-shadow: 0 3px 10px #5d5d5d;
+  -ms-box-shadow: 0 3px 10px #5d5d5d;
+  box-shadow: 0 3px 10px #5d5d5d;
+}
+.logo {
+  background: url('../images/logo.png') no-repeat;
+  background-size: 100%;
+  height: 110px;
+  width: 287px;
+}
+.login-form li label {
+  display: none;
+  display: block\9;
+  text-indent: 15px;
+}
+.login-form li.focus > label {
+  display: none;
+}
+.login-form li.hidePlaceholder label {
+  display: none;
+}
+.login-form li input {
+  text-indent: 15px;
+}
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+  .login-form li label {
+    display: none;
+  }
+  /* IE10 hack */
+}
+.Bdr-t-r5 {
+  border-top: 5px solid #be0428;
+}
+::-webkit-input-placeholder {
+  color: #5d5d5d;
+  text-indent: 15px;
+}
+::-moz-placeholder {
+  color: #5d5d5d;
+  text-indent: 15px;
+}
+:-moz-placeholder {
+  color: #5d5d5d;
+  text-indent: 15px;
+}
+:-ms-input-placeholder {
+  color: #5d5d5d;
+  text-indent: 15px;
+}

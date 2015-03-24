@@ -1,0 +1,98 @@
+/* Variables */
+@font1: 'Seravek', 'Lucida Grande';
+@font2: 'ITC SLimbach', 'Myriad';
+@red: #be0428;
+@white: #fff;
+@pale: #f8f9f9;
+@lightGrey: #c2c2c2;
+@grey: #5d5d5d;
+@black: #000;
+
+.C-red {
+    color: @red;
+}
+.Bgc-red {
+    background: @red;
+}
+.C-wht {
+    color: @white;
+}
+.Bgc-wht {
+    background: @white;
+}
+.C-grey1 {
+    color: @lightGrey;
+}
+.Bgc-grey1 {
+    background: @lightGrey;
+}
+.C-grey2 {
+    color: @grey;    
+}
+.Bgc-grey2 {
+    background: @grey;
+}
+.C-bk {
+    color: @black;
+}
+.Font-1 {
+    font-family: @font1;
+}
+.Font-2 {
+    font-family: @font2;
+}
+
+.Bs-1 {
+    -webkit-box-shadow: 0 3px 10px @grey;
+    -moz-box-shadow: 0 3px 10px @grey;
+    -ms-box-shadow: 0 3px 10px @grey;
+    box-shadow: 0 3px 10px @grey;
+}
+.logo {
+    background: url('../images/logo.png') no-repeat;
+    background-size: 100%;
+    height: 110px;
+    width: 287px;
+}
+.login-form {
+    li {
+        label {
+            display: none;
+            display: block\9;
+            text-indent: 15px;
+        }
+        &.focus>label {
+            display: none;
+        }
+        &.hidePlaceholder {
+            label {
+                display: none;
+            }
+        }
+        input {
+            text-indent: 15px;
+        }
+    }
+}
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) { 
+  .login-form li label {display: none} /* IE10 hack */
+} 
+.Bdr-t-r5 {
+    border-top: 5px solid @red;
+}
+::-webkit-input-placeholder {
+   color: @grey;
+   text-indent: 15px;
+}
+::-moz-placeholder {
+   color: @grey;
+   text-indent: 15px;
+}
+:-moz-placeholder {
+   color: @grey;
+   text-indent: 15px;
+}
+:-ms-input-placeholder {
+   color: @grey;
+   text-indent: 15px;
+}

@@ -1,0 +1,59 @@
+var login = {
+    query: function (queryStr, parentNode) {
+        var hasWhitespace = queryStr.indexOf(' ');
+        var type = queryStr.substring(0, 1);
+        var str = queryStr.substring(1);
+        var func;
+        var node = (parentNode) ? parentNode : document;
+        return node.querySelectorAll(queryStr) || [{}];
+
+    },
+    removeClassName: function (obj, toRemove) {
+        var reg = new RegExp('(\\s|^)' + toRemove + '(\\s|$)');
+        var newClass = obj.className.replace(reg, ' ');
+        obj.className = newClass;
+    },
+    togglePlaceholder: function (e) {
+        var parentNode = e.srcElement.parentNode;
+        var input = login.query('input', parentNode)[0];
+        var parentClass = parentNode.className;
+        var toggleText = 'hidePlaceholder';
+        if (typeof input.value === 'undefined' || input.value === '') {
+            if (parentClass.indexOf(toggleText) < 0) { // to hide label
+                input.focus();
+                parentNode.className = parentClass + ' ' + toggleText;
+            } else {            
+                login.removeClassName(parentNode, toggleText);  
+            }
+        }
+    },
+    bindEvent: function (element, eventType, action) {
+        if (typeof element !== 'undefined') {
+            if (element.addEventListener) {
+                element.addEventListener(eventType, action);
+            } else {
+                element.attachEvent('on' + eventType, action);
+            }
+        }
+    },
+    bindIEEvents: function () {
+        var that = this;
+        var i;
+        var placeholderLabels;
+        var placeholderInput;
+        var isIE8_9 = (document.all && !window.atob)? true : false;
+        if (isIE8_9) { // only for IE8 and 9
+            placeholderLabels = that.query('.login-form .placeholder label');
+            placeholderInput = that.query('.login-form .placeholder input');
+            for (i = 0; i < placeholderLabels.length; i += 1) {
+                that.bindEvent(placeholderLabels[i], 'click', that.togglePlaceholder);
+                that.bindEvent(placeholderInput[i], 'blur', that.togglePlaceholder);
+                that.bindEvent(placeholderInput[i], 'keypress', that.togglePlaceholder);
+            }
+        }
+    },
+    init: function () {
+        this.bindIEEvents();
+    }
+}
+login.init();
