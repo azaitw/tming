@@ -194,19 +194,29 @@ gulp.task('login-render-template', function (done) {
 });
 
 gulp.task('login-render-inline-template', function (done) {
+    var filepath = path.join(__dirname, './source/data/data-structure.json');
     var options = {
         ignorePartials: true,
         batch : ['./source/templates/partials']
     };
-    var data = {};
     var optsInline = {
         swallowErrors: true
     };
-    return gulp.src('./source/templates/login.handlebars')
-    .pipe(handlebars(data, options))
-    .pipe(inlinesource(optsInline))
-    .pipe(rename('login.html'))
-    .pipe(gulp.dest('./source/rendered'));
+    fs.readFile(filepath, {encoding: 'utf-8'}, function (err, D) {
+        var data;
+         if (err) {
+             console.log('error: ', err);
+             return;
+         }
+         data = JSON.parse(D);
+         gulp.src('./source/templates/login.handlebars')
+         .pipe(handlebars(data, options))
+         .pipe(inlinesource(optsInline))
+         .pipe(rename('login.html'))
+         .pipe(gulp.dest('./source/rendered'))
+         .on('end', done); 
+         return;
+    });
 });
 
 // Copy output/production.js and output/production.css into source/html/index.html, compress html, and generate output/index.html
