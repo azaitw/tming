@@ -211,8 +211,8 @@ gulp.task('login-render-inline-template', function (done) {
          data = JSON.parse(D);
          gulp.src('./source/templates/login.handlebars')
          .pipe(handlebars(data, options))
-         .pipe(inlinesource(optsInline))
          .pipe(rename('login.html'))
+         .pipe(inlinesource(optsInline))
          .pipe(gulp.dest('./source/rendered'))
          .on('end', done); 
          return;
@@ -226,7 +226,7 @@ gulp.task('copy', ['login-copy-css', 'login-render-template', 'render-template',
 });
 
 // Copy output/production.js and output/production.css into source/html/index.html, compress html, and generate output/index.html
-gulp.task('copy-and-compress', ['login-minify-css', 'login-render-inline-template', 'render-template', 'login-minify-js', 'minify-js', 'minify-css'], function (done) {
+gulp.task('copy-and-compress', ['login-minify-css', 'login-minify-js', 'login-render-inline-template', 'render-template', 'minify-js', 'minify-css'], function (done) {
     return gulp.src('./source/rendered/*')
     .pipe(gulp.dest('output'));
 });

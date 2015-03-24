@@ -58,6 +58,14 @@
 .login-form li input {
   text-indent: 15px;
 }
+.icon {
+  background-position: center;
+  background-size: 100%;
+  background-repeat: no-repeat;
+}
+.contact li {
+  margin: 0 15px;
+}
 @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
   .login-form li label {
     display: none;
@@ -82,4 +90,8 @@
 :-ms-input-placeholder {
   color: #5d5d5d;
   text-indent: 15px;
+}
+.login-wrap {
+  width: 372px;
+  height: 386px;
 }
