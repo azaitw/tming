@@ -13,18 +13,18 @@ var login = {
         var newClass = obj.className.replace(reg, ' ');
         obj.className = newClass;
     },
-    togglePlaceholder: function (e) {
+    hidePlaceholder: function (e) {
+        var parentNode = e.srcElement.parentNode;
+        var parentClass = parentNode.className;
+        if (parentClass.indexOf('hidePlaceholder') < 0) {
+            parentNode.className = parentClass + ' hidePlaceholder';
+        }
+    },
+    showPlaceholder: function (e) {
         var parentNode = e.srcElement.parentNode;
         var input = login.query('input', parentNode)[0];
-        var parentClass = parentNode.className;
-        var toggleText = 'hidePlaceholder';
         if (typeof input.value === 'undefined' || input.value === '') {
-            if (parentClass.indexOf(toggleText) < 0) { // to hide label
-                input.focus();
-                parentNode.className = parentClass + ' ' + toggleText;
-            } else {            
-                login.removeClassName(parentNode, toggleText);  
-            }
+            login.removeClassName(parentNode, 'hidePlaceholder');
         }
     },
     bindEvent: function (element, eventType, action) {
@@ -46,9 +46,9 @@ var login = {
             placeholderLabels = that.query('.login-form .placeholder label');
             placeholderInput = that.query('.login-form .placeholder input');
             for (i = 0; i < placeholderLabels.length; i += 1) {
-                that.bindEvent(placeholderLabels[i], 'click', that.togglePlaceholder);
-                that.bindEvent(placeholderInput[i], 'blur', that.togglePlaceholder);
-                that.bindEvent(placeholderInput[i], 'keypress', that.togglePlaceholder);
+                that.bindEvent(placeholderLabels[i], 'click', that.hidePlaceholder);
+                that.bindEvent(placeholderInput[i], 'blur', that.showPlaceholder);
+                that.bindEvent(placeholderInput[i], 'keyup', that.hidePlaceholder);
             }
         }
     },
