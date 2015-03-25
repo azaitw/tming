@@ -282,7 +282,6 @@ var app = {
             placeholderInput = that.query('.signup-form .placeholder input');
             for (i = 0; i < placeholderLabels.length; i += 1) {
                 that.bindEvent(placeholderLabels[i], 'click', that.togglePlaceholder);
-                that.bindEvent(placeholderInput[i], 'click', that.togglePlaceholder);
                 that.bindEvent(placeholderInput[i], 'blur', that.togglePlaceholder);
             }
         }
