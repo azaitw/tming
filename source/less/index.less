@@ -270,17 +270,23 @@
 }
 ::-webkit-input-placeholder {
    color: @grey;
-   text-indent: 5px;
+   text-indent: 15px;
    font-size: 13px;
 }
 ::-moz-placeholder {
-   color: @grey;    
+   color: @grey; 
+   text-indent: 15px;
+   font-size: 13px;
 }
 :-moz-placeholder {
    color: @grey;
+   text-indent: 15px;
+   font-size: 13px;
 }
 :-ms-input-placeholder {
    color: @grey;
+   text-indent: 15px;
+   font-size: 13px;
 }
 .signup {
     top: 0;
@@ -309,11 +315,15 @@
                 font-size: 13px;
                 padding: 0 0 3px 0\9;
                 border-radius: 5px;
+                text-indent: 15px;
+            }
+            &>select {
+                text-indent: 7px;
             }
             &>label {
                 display: none;
                 display: block\9;
-                text-indent: 2px;
+                text-indent: 15px;
             }
             &.focus>label {
                 display: none;

@@ -244,17 +244,23 @@
 }
 ::-webkit-input-placeholder {
   color: #5d5d5d;
-  text-indent: 5px;
+  text-indent: 15px;
   font-size: 13px;
 }
 ::-moz-placeholder {
   color: #5d5d5d;
+  text-indent: 15px;
+  font-size: 13px;
 }
 :-moz-placeholder {
   color: #5d5d5d;
+  text-indent: 15px;
+  font-size: 13px;
 }
 :-ms-input-placeholder {
   color: #5d5d5d;
+  text-indent: 15px;
+  font-size: 13px;
 }
 .signup {
   top: 0;
@@ -282,11 +288,15 @@
   font-size: 13px;
   padding: 0 0 3px 0\9;
   border-radius: 5px;
+  text-indent: 15px;
+}
+.signup-form > ul > li > select {
+  text-indent: 7px;
 }
 .signup-form > ul > li > label {
   display: none;
   display: block\9;
-  text-indent: 2px;
+  text-indent: 15px;
 }
 .signup-form > ul > li.focus > label {
   display: none;
