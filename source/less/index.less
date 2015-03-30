@@ -296,17 +296,29 @@
    text-indent: 15px;
    font-size: 13px;
 }
-.signup {
-    top: 0;
-    &.fixed {
+.fixedOnScroll {
+    position: static;
+    .fixedOnScroll-placeholder {
         display: none;
-        position: fixed;
-        -webkit-box-shadow: 0 2px 5px @black;
-        -moz-box-shadow: 0 2px 5px @black;
-        -ms-box-shadow: 0 2px 5px @black;
-        box-shadow: 0 2px 5px @black;        
+        top: 0;
+        width: 100%;
+    }
+    &.fixed {
+        position: relative;
+        .fixedOnScroll-placeholder {
+            display: block;
+        }
+        &>div:first-child {
+            position: fixed;
+            top: 0;
+            -webkit-box-shadow: 0 2px 5px @black;
+            -moz-box-shadow: 0 2px 5px @black;
+            -ms-box-shadow: 0 2px 5px @black;
+            box-shadow: 0 2px 5px @black;
+        }
     }
 }
+
 .signup-form {
     &>ul {
         &>li {

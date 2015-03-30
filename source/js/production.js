@@ -36,6 +36,12 @@ var app = {
     removeClassName: function (obj, toRemove) {
         var reg = new RegExp('(\\s|^)' + toRemove + '(\\s|$)');
         var newClass = obj.className.replace(reg, ' ');
+        if (typeof String.prototype.trim !== 'function') {
+          String.prototype.trim = function() {
+            return this.replace(/^\s+|\s+$/g, ''); 
+          }
+        }
+        newClass.trim();
         obj.className = newClass;
     },
     toggleNav: function (e) {
@@ -173,6 +179,7 @@ var app = {
         };
         setInterval(function () {
             var pos;
+            var animTime = app.attrs.slideshow.animation;
             that.attrs.slideshow.state[key].position += 1;
             pos = '-' + (app.attrs.slideshow.state[key].position * 100) + '%';
             that.animateEl(el, pos);
@@ -181,17 +188,19 @@ var app = {
                     el.className = elClassName;
                     that.animateEl(el, '0%');
                     app.attrs.slideshow.state[key].position = 0;
-                }, app.attrs.slideshow.animation);
+                }, animTime);
                 setTimeout(function () {
                     el.className += ' move';
-                }, app.attrs.slideshow.animation + 100);
+                }, animTime + (animTime / 2));
             }
         }, app.attrs.slideshow.interval);
     },
-    fixedFormWhenScroll: function (formEl) {
+    fixedOnScroll: function (fixedOnScroll) {
+        var formEl = fixedOnScroll.children[0];
         var initPosY = formEl.offsetTop;
         var body = app.query('body')[0];
-        var newForm = formEl.cloneNode(true);
+        var formHeight = Math.max(formEl.offsetHeight, formEl.clientHeight);
+        var newForm = formEl.cloneNode();
         var updateHeight = function () {
             initPosY = formEl.offsetTop;
         };
@@ -199,14 +208,15 @@ var app = {
             var posY = window.pageYOffset || window.document.documentElement.scrollTop;
             if (posY >= initPosY && app.attrs.signupForm.fixed === false) {
                 app.attrs.signupForm.fixed = true;
-                newForm.style.display = 'block';
+                fixedOnScroll.className += ' fixed';
             } else if (posY < initPosY && app.attrs.signupForm.fixed === true){
                 app.attrs.signupForm.fixed = false;
-                newForm.style.display = '';
+                app.removeClassName(fixedOnScroll, 'fixed');
             }
         };
-        newForm.className += ' fixed';
-        body.appendChild(newForm);
+        newForm.style.height = formHeight + 'px';
+        newForm.className = 'fixedOnScroll-placeholder';
+        fixedOnScroll.appendChild(newForm);
         this.bindEvent(window, 'scroll', updateFormPos);
         this.bindEvent(window, 'resize', updateHeight);
     },
@@ -299,9 +309,6 @@ var app = {
             navigator.userAgent.indexOf('iPod') > 0 ||
             navigator.userAgent.indexOf('IEMobile') > 0
         ) ? true : false;
-        if (!that.attrs.isMobile && that.query('.signup').length > 0) {
-            that.fixedFormWhenScroll(that.query('.signup')[0]);
-        }
         that.bindEvent(navMobileBtn, 'click', that.toggleNavMobile);
         that.bindEvent(navMobileCloseBtn, 'click', that.toggleNavMobile);
     },
@@ -312,6 +319,9 @@ var app = {
         that.bindEvent(window, 'orientationchange', that.hideNavMobile);
         that.bindMobileNavEvent();
         that.bindIEEvents();
+        if (!that.attrs.isMobile && that.query('.fixedOnScroll').length === 1) {
+            that.fixedOnScroll(that.query('.fixedOnScroll')[0]);
+        }
     }
 };
 app.init();
