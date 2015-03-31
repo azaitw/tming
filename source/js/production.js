@@ -197,12 +197,17 @@ var app = {
     },
     fixedOnScroll: function (fixedOnScroll) {
         var formEl = fixedOnScroll.children[0];
-        var initPosY = formEl.offsetTop;
         var body = app.query('body')[0];
-        var formHeight = Math.max(formEl.offsetHeight, formEl.clientHeight);
+        var initPosY;
         var newForm = formEl.cloneNode();
+        var formHeight = 0;
         var updateHeight = function () {
-            initPosY = formEl.offsetTop;
+            var newFormHeight = Math.max(formEl.offsetHeight, formEl.clientHeight);
+            initPosY = fixedOnScroll.offsetTop;
+            if (newFormHeight !== formHeight) {
+                formHeight = newFormHeight;
+                newForm.style.height = formHeight + 'px';
+            }
         };
         var updateFormPos = function () {
             var posY = window.pageYOffset || window.document.documentElement.scrollTop;
@@ -217,6 +222,7 @@ var app = {
         newForm.style.height = formHeight + 'px';
         newForm.className = 'fixedOnScroll-placeholder';
         fixedOnScroll.appendChild(newForm);
+        updateHeight();
         this.bindEvent(window, 'scroll', updateFormPos);
         this.bindEvent(window, 'resize', updateHeight);
     },
