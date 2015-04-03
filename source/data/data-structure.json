@@ -14,10 +14,11 @@
                 "classnames": "banner2 "
             },
             {
-                "title": "<span class=\"Cf\">TutorGlass</span><span class=\"Cf Fz-4 Ls-3\">The Future of Learning</span>",
-                "desc": "Enjoy learning Chinese in the most fun and easiest way possible. Anytime, Anywhere, TutorMing.",
+                "title": "Great education partners make it possible!",
+                "desc": "Partners from the Tutor Group",
                 "url": "/images/banner3.jpg",
-                "classnames": "banner3 "
+                "classnames": "banner3 ",
+                "headerstyle": "top:100px"
             }
         ]
     },

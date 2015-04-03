@@ -76,6 +76,7 @@
     box-shadow: 0 1px 5px @grey;
 }
 .header {
+    /*
     &:after {
         display: block;
         content: " ";
@@ -87,15 +88,16 @@
         background: @red;
         z-index: 100;
     }
+    */
 }
 .logo {
-    background: url('../images/logo.png') no-repeat;
+    background: url('../images/logo-s.png') no-repeat;
     background-size: 100%;
-    height: 110px;
-    width: 287px;
+    height: 59px;
+    width: 150px;
 }
 .nav {
-    margin: 90px 0 0 0;
+    margin: 50px 0 0 0;
     width: 610px;
 }
 .nav-m-toggle {
@@ -146,7 +148,10 @@
                 border-left: 4px solid transparent;
                 border-right: 4px solid transparent;
                 border-top: 4px solid @red;
-            }   
+            }
+            &:hover:after {
+                border-top: 4px solid @grey;
+            }
         }
     }
     &.on {
@@ -154,6 +159,9 @@
             &:link,
             &:visited {
                 color: @black;
+            }
+            &:after {
+                border-top: 4px solid @black;
             }
         }
         .snd {
@@ -216,17 +224,17 @@
         max-height: 0;
         opacity: 0;
         display: none\9;
-        border-bottom: 2px solid @red;
-        background: @lightGrey;
-        top: 160px;
+//        border-bottom: 2px solid @red;
+        background: url(../images/black-80.png) repeat;
+        top: 100px;
         padding: 0 0 50px 0;
         a {
             &:link,
             &:visited {
-                color: @grey;
+                color: @white;
             }
             &:hover {
-                color: @black;
+                color: @lightGrey;
             }
             &:active {
                 color: @white;
@@ -241,8 +249,8 @@
     }
 }
 .slideshow-wrap {
-    height: 450px;
-    height: 400px\9;
+    height: 600px;
+    height: 550px\9;
 }
 .wrap {
     width: 900px;
