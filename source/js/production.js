@@ -106,7 +106,7 @@ var app = {
             app.attrs.navMobile.opened = true;
             window.scrollTo(0, 0);
             navMobile = app.query('.nav-m')[0];
-            container = app.query('.container')[0];
+            container = app.query('body')[0];
             navMobile.style.display = 'block';
             height = Math.max(screen.height, window.innerHeight, navMobile.clientHeight);
             container.style.overflow = 'hidden';
@@ -127,7 +127,7 @@ var app = {
             app.attrs.navMobile.animating = true;
             app.attrs.navMobile.opened = false;
             navMobile = app.query('.nav-m')[0];
-            container = app.query('.container')[0];
+            container = app.query('.body')[0];
             container.style.height = 'auto';
             navMobile.style.height = 'auto';
             container.style.overflow = 'visible';
