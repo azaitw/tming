@@ -21,8 +21,7 @@ var app = {
         },
         signupForm: {
             fixed: false
-        },
-        animMethod: {}
+        }
     },
     query: function (queryStr, parentNode) {
         var hasWhitespace = queryStr.indexOf(' ');
@@ -41,7 +40,7 @@ var app = {
             return this.replace(/^\s+|\s+$/g, ''); 
           }
         }
-        newClass.trim();
+        newClass = newClass.trim();
         obj.className = newClass;
     },
     toggleNav: function (e) {
@@ -139,61 +138,56 @@ var app = {
             }, 200);
         }
     },
-    animateMethods: function (browser) {
-        var prop;
-        var value = [];
-        switch (browser) {
-        case 'safari':
-            prop = '-webkit-transform';
-            value = ['translate3d(', ', 0, 0)'];
-            break;
-        case 'chrome':
-            prop = '-webkit-transform';
-            value = ['translate(', ', 0)'];
-            break;
-        default:
-            prop = 'left';
-            value = ['', ''];
+    anim: {
+        swipe: function (el, key, animMethod) {
+            var that = app;
+            var children = app.query('li', el);
+            var childrenLen = children.length;
+            var elClassName = el.className;
+            var prop = animMethod.prop;
+            var value = animMethod.value;
+            el.appendChild(children[0].cloneNode(true));
+            el.style[prop] = value[0] + '0%' + value[1];
+            el.className += ' anim-swipe';
+            app.attrs.slideshow.state[key] = {
+                position: 0,
+                size: children.length
+            };
+            setInterval(function () {
+                var pos;
+                var animTime = app.attrs.slideshow.animation;
+                that.attrs.slideshow.state[key].position += 1;
+                pos = '-' + (app.attrs.slideshow.state[key].position * 100) + '%';
+                el.style[prop] = value[0] + pos + value[1];
+                if (app.attrs.slideshow.state[key].position === childrenLen) {
+                    setTimeout(function () {
+                        el.className = elClassName;
+                        el.style[prop] = value[0] + '0%' + value[1];
+                        app.attrs.slideshow.state[key].position = 0;
+                    }, animTime);
+                    setTimeout(function () {
+                        el.className += ' anim-swipe';
+                    }, animTime + (animTime / 2));
+                }
+            }, app.attrs.slideshow.interval);
+        },
+        opacity: function (el) {
+            var that = app;
+            var children = app.query('li', el);
+            var childrenLen = children.length;
+            var showing = 0; // 0 1 2 3
+            el.className += ' anim-opacity';
+            children[showing].className += ' on';
+            setInterval(function () {
+                var nextShowing = showing + 1;
+                if (nextShowing >= childrenLen) {
+                    nextShowing = 0;
+                }
+                app.removeClassName(children[showing], 'on');
+                showing = nextShowing;
+                children[showing].className += ' on';
+            }, app.attrs.slideshow.interval);
         }
-        this.attrs.animMethod = {
-            prop: prop,
-            value: value
-        };
-    },
-    animateEl: function (el, pos) {
-        var prop = app.attrs.animMethod.prop;
-        var value = app.attrs.animMethod.value;
-        el.style[prop] = value[0] + pos + value[1];
-    },
-    autoSlideshow: function (el, key) {
-        var that = this;
-        var children = app.query('li', el);
-        var childrenLen = children.length;
-        var elClassName = el.className;
-        el.appendChild(children[0].cloneNode(true));
-        that.animateEl(el, '0%');
-        el.className += ' move';
-        app.attrs.slideshow.state[key] = {
-            position: 0,
-            size: children.length
-        };
-        setInterval(function () {
-            var pos;
-            var animTime = app.attrs.slideshow.animation;
-            that.attrs.slideshow.state[key].position += 1;
-            pos = '-' + (app.attrs.slideshow.state[key].position * 100) + '%';
-            that.animateEl(el, pos);
-            if (app.attrs.slideshow.state[key].position === childrenLen) {
-                setTimeout(function () {
-                    el.className = elClassName;
-                    that.animateEl(el, '0%');
-                    app.attrs.slideshow.state[key].position = 0;
-                }, animTime);
-                setTimeout(function () {
-                    el.className += ' move';
-                }, animTime + (animTime / 2));
-            }
-        }, app.attrs.slideshow.interval);
     },
     fixedOnScroll: function (fixedOnScroll) {
         var formEl = fixedOnScroll.children[0];
@@ -249,23 +243,39 @@ var app = {
             }
         }
     },
-    bindSlideshow: function () {
+    bindSlideshow: function (animationType) {
         var slideshows = this.query('.slideshow');
         var slideshowsDeckLen;
+        var ieName;
         var i;
-        if (navigator.userAgent.indexOf('Safari') > 0) {
-            if (navigator.userAgent.indexOf('Chrome') > 0) {
-                this.animateMethods('chrome');
+        var animType = animationType || 'swipe';
+        var animMethod = {};
+        var props;
+        var value;
+
+        if (animType === 'opacity') {
+        } else if (animType === 'swipe') {
+            if (navigator.userAgent.indexOf('Safari') > 0) {
+                if (navigator.userAgent.indexOf('Chrome') > 0) {
+                    prop = '-webkit-transform';
+                    value = ['translate(', ', 0)'];
+                } else {
+                    prop = '-webkit-transform';
+                    value = ['translate3d(', ', 0, 0)'];
+                }
             } else {
-                this.animateMethods('safari');
+                prop = 'left';
+                value = ['', ''];
             }
-        } else {
-            this.animateMethods('default');
+            animMethod = {
+                prop: prop,
+                value: value
+            };
         }
         for (i = 0; i < slideshows.length; i += 1) {
             slideshowsDeckLen = this.query('li', slideshows[i]).length;
             if (slideshowsDeckLen > 1) {
-                this.autoSlideshow(slideshows[i], i);
+                this.anim[animType](slideshows[i], i, animMethod);
             }
         }
     },
@@ -320,7 +330,7 @@ var app = {
     },
     init: function () {
         var that = this;  
-        that.bindSlideshow();
+        that.bindSlideshow('opacity');
         that.bindNav();
         that.bindEvent(window, 'orientationchange', that.hideNavMobile);
         that.bindMobileNavEvent();

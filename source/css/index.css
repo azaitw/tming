@@ -219,12 +219,30 @@
 .wrap {
   width: 900px;
 }
-.move {
+.anim-swipe {
   -webkit-transition: all 0.8s ease-in-out;
   -moz-transition: all 0.8s ease-in-out;
   -ms-transition: all 0.8s ease-in-out;
   -o-transition: all 0.8s ease-in-out;
   transition: all 0.8s ease-in-out;
+}
+.anim-opacity > li {
+  -webkit-transition: opacity 0.8s ease-in-out;
+  -moz-transition: opacity 0.8s ease-in-out;
+  -ms-transition: opacity 0.8s ease-in-out;
+  -o-transition: opacity 0.8s ease-in-out;
+  transition: opacity 0.8s ease-in-out;
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  display: none\0;
+  display: block\9\0;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=5)";
+}
+.anim-opacity > li.on {
+  opacity: 1;
+  display: block\0;
 }
 .easy-wrap {
   border-bottom: 10px solid #be0428;

@@ -247,8 +247,24 @@
 .wrap {
     width: 900px;
 }
-.move {
+.anim-swipe {
     .transition(all 0.8s ease-in-out);
+}
+.anim-opacity {
+    &>li {
+        .transition(opacity 0.8s ease-in-out);
+        position: absolute;
+        top: 0;
+        left: 0;
+        opacity: 0;
+        display: none\0; // ie8, 9
+        display: block\9\0; // ie9
+        -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=5)";
+        &.on {
+            opacity: 1;
+            display: block\0;
+        }
+    }
 }
 .easy-wrap {
     border-bottom: 10px solid @red;
