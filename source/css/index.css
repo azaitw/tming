@@ -43,7 +43,7 @@
   font-family: 'ITC SLimbach', 'Myriad';
 }
 .Ts-1 {
-  text-shadow: 0 0 6px #5d5d5d;
+  text-shadow: 0 0 0 transparent, 0 0 6px #5d5d5d;
 }
 .Bs-1 {
   -webkit-box-shadow: 0 1px 5px #000000;
@@ -161,7 +161,7 @@
   font-size: 32px;
   line-height: 35px;
   letter-spacing: 1px;
-  text-shadow: 0 0 6px #5d5d5d;
+  text-shadow: 0 0 0 transparent, 0 0 6px #5d5d5d;
 }
 .banner2 {
   left: 90px;
@@ -172,7 +172,7 @@
   font-size: 36px;
   line-height: 35px;
   letter-spacing: 1px;
-  text-shadow: 0 0 6px #5d5d5d;
+  text-shadow: 0 0 0 transparent, 0 0 6px #5d5d5d;
 }
 .banner3 {
   left: 30px;
@@ -183,7 +183,7 @@
   font-size: 50px;
   line-height: 50px;
   letter-spacing: 1px;
-  text-shadow: 0 2px 2px #c2c2c2;
+  text-shadow: 0 0 0 transparent, 0 2px 2px #c2c2c2;
   color: #be0428;
 }
 .banner3 p {
@@ -553,7 +553,7 @@
     line-height: 22px;
     letter-spacing: 0.8px;
     font-size: 22px;
-    text-shadow: 0 0 6px #333;
+    text-shadow: 0 0 0 transparent, 0 0 6px #333;
   }
   .banner1 p {
     font-size: 13px;
@@ -568,7 +568,7 @@
     line-height: 26px;
     letter-spacing: 0.8px;
     font-size: 26px;
-    text-shadow: 0 0 6px #333;
+    text-shadow: 0 0 0 transparent, 0 0 6px #333;
   }
   .banner2 p {
     font-size: 13px;
