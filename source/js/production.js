@@ -110,10 +110,10 @@ var app = {
             navMobile.style.display = 'block';
             height = Math.max(screen.height, window.innerHeight, navMobile.clientHeight);
             container.style.overflow = 'hidden';
+            container.style.height = height + 'px';
             if (height > navMobile.offsetHeight) {
                 navMobile.style.height = height + 'px';
             }
-            container.style.height = height + 'px';
             setTimeout(function () {
                 navMobile.style.opacity = '1';
                 app.attrs.navMobile.animating = false;
@@ -127,13 +127,12 @@ var app = {
             app.attrs.navMobile.animating = true;
             app.attrs.navMobile.opened = false;
             navMobile = app.query('.nav-m')[0];
-            container = app.query('.body')[0];
-            container.style.height = 'auto';
+            container = app.query('body')[0];
+            container.setAttribute('style', '');
             navMobile.style.height = 'auto';
-            container.style.overflow = 'visible';
             navMobile.style.opacity = '0';
             setTimeout(function () {
-            navMobile.style.display = 'none';
+                navMobile.style.display = 'none';
                 app.attrs.navMobile.animating = false;
             }, 200);
         }
